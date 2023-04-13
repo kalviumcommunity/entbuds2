@@ -7,23 +7,24 @@ import Cards from '../Slide/Card';
 const DocumentaryList = () => {
 
     const [documentary, setDocumentary] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        axios.get(wants.getdocumentaries)
+        axios.get(`${wants.getdocumentaries}&page=${page}`)
         .then(response => {
-            setDocumentary(response.data.results)
+            setDocumentary(prevMovies => [...prevMovies, ...response.data.results])
         })
-    }, []);
+    }, [page]);
 
   return (
     
     <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
       <div className="listCard">
                 {
@@ -32,6 +33,7 @@ const DocumentaryList = () => {
                     ))
                 }
             </div>
+            <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
     </div>
   )
 }

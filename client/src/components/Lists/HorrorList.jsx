@@ -7,23 +7,24 @@ import Cards from '../Slide/Card';
 const HorrorList = () => {
 
     const [horrormovie, setHorrorMovie] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        axios.get(wants.gethorror)
+        axios.get(`${wants.gethorror}&page=${page}`)
         .then(response => {
-            setHorrorMovie(response.data.results)
+            setHorrorMovie(prevMovies => [...prevMovies, ...response.data.results])
         })
-    }, []);
+    }, [page]);
 
   return (
     
     <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
       <div className="listCard">
                 {
@@ -32,6 +33,7 @@ const HorrorList = () => {
                     ))
                 }
             </div>
+            <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
     </div>
   )
 }

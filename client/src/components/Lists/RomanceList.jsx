@@ -7,23 +7,24 @@ import Cards from '../Slide/Card';
 const RomanceList = () => {
 
     const [romanticmovie, setRomanticMovie] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        axios.get(wants.getromance)
+        axios.get(`${wants.getromance}&page=${page}`)
         .then(response => {
-            setRomanticMovie(response.data.results)
+            setRomanticMovie(prevMovies => [...prevMovies, ...response.data.results])
         })
-    }, []);
+    }, [page]);
 
   return (
     
     <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
       <div className="listCard">
                 {
@@ -32,6 +33,7 @@ const RomanceList = () => {
                     ))
                 }
             </div>
+            <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
     </div>
   )
 }

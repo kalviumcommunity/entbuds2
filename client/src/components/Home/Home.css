@@ -57,3 +57,9 @@
 swiper-button-prev slider-arrow{
     color: red;
 }
+
+.allCategoriesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -32,7 +32,7 @@ const Cards = ({ movie }) => {
             />
             <div className="card-overlay">
               <div className="card-title">
-                {movie ? movie.original?.title : ""}
+                {movie ? movie.original_title : ""}
               </div>
               <div className="card-runtime">
                 {movie ? movie.release_date : ""}

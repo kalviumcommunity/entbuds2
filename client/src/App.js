@@ -7,6 +7,7 @@ import ActionList from './components/Lists/ActionList';
 import ComedyList from './components/Lists/ComedyList';
 import RomanceList from './components/Lists/RomanceList';
 import DocumentaryList from './components/Lists/DocumentaryList'
+import TopratedList from './components/Lists/TopratedList';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route index element = {<Home />}></Route>
+        <Route path='movies/toprated' element = {<TopratedList />}></Route>
         <Route path='movies/horror' element = {<HorrorList />}></Route>
         <Route path='movies/action' element = {<ActionList />}></Route>
         <Route path='movies/comedy' element = {<ComedyList />}></Route>

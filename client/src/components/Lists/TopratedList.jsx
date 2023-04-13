@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './TopratedList.css'
+import './TopratedList.css';
 import axios from '../../api/Axios';
 import wants from '../../api/Wanted';
 import Cards from '../Slide/Card';
@@ -7,17 +7,24 @@ import Cards from '../Slide/Card';
 const TopratedList = () => {
 
     const [topmovie, setTopMovie] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        axios.get(wants.gettops)
+        axios.get(`${wants.gettops}&page=${page}`)
         .then(response => {
-            setTopMovie(response.data.results)
+            setTopMovie(prevMovies => [...prevMovies, ...response.data.results])
         })
-    }, []);
+    }, [page]);
 
   return (
-    <div className='list'>
-      <h2 className="listTitle">Top Rated</h2>
+    <div >
+      <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
             <div className="listCard">
                 {
                     topmovie.map((movie,index) => (
@@ -25,6 +32,7 @@ const TopratedList = () => {
                     ))
                 }
             </div>
+            <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
     </div>
   )
 }

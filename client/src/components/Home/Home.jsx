@@ -1,94 +1,116 @@
-import React, { useEffect, useState } from 'react'
-import "./Home.css"
-import axios from '../../api/Axios';
-import wants from '../../api/Wanted';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/swiper-bundle.css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import {EffectCoverflow, Pagination, Navigation } from 'swiper'
-import {Link} from "react-router-dom";
-import TopratedList from '../Lists/TopratedList';
+import React, { useEffect, useState } from "react";
+import "./Home.css";
+import axios from "../../api/Axios";
+import wants from "../../api/Wanted";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/swiper-bundle.css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { EffectCoverflow, Pagination, Navigation } from "swiper";
+import { Link } from "react-router-dom";
+import TopHomeList from "../Homelists/TopRatedHome";
+import ActionHomeList from "../Homelists/ActionHome";
+import ComedyHomeList from "../Homelists/ComedyHome";
+import DocHomeList from "../Homelists/DocumentaryHome";
+import HorrorHomeList from "../Homelists/HorrorHome";
+import RomanceHomeList from "../Homelists/RomanceHome";
 
 
 const Home = () => {
-    const [latestmovie, setMovie] = useState([]);
+  console.log(`${process.env.REACT_APP_API_KEY}`)
+  const [latestmovie, setMovie] = useState([]);
 
-    useEffect(() => {
-        axios.get(wants.getLatest)
-        .then(response => {
-            setMovie(response.data.results)
-        })
-    }, []);
+  useEffect(() => {
+    axios.get(wants.getLatest).then((response) => {
+      setMovie(response.data.results);
+    });
+  }, []);
 
-    // console.log(latestmovie)
-  
+  console.log(latestmovie);
 
   return (
     <div>
-      {latestmovie.length>0 &&
-       <Swiper
-       effect={'coverflow'}
-       grabCursor={true}
-       centeredSlides={true}
-       loop={true}
-       slidesPerView={'auto'}
-       coverflowEffect={{
-         rotate: 0,
-         stretch: 0,
-         depth: 100,
-         modifier: 2.5,
-       }}
-       pagination={{ el: '.swiper-pagination', clickable: true }}
-       navigation={{
-         nextEl: '.swiper-button-next',
-         prevEl: '.swiper-button-prev',
-         clickable: true,
-       }}
-       modules={[EffectCoverflow, Pagination, Navigation]}
-       className="swiper_container">
-            {
-                latestmovie.map(movie => (
-                  <SwiperSlide key={movie.id}>
-                    <Link style = {{textDecoration:"none", color:"white"}} to={`/movie/${movie.id}`} >
-                      <div className='container1'>
-                    <div className='partImage'>
-                        <img 
-                        alt='thumnsil'
-                        src={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`} />
+      {latestmovie.length > 0 && (
+        <Swiper
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          loop={true}
+          slidesPerView={"auto"}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false
+          }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+          }}
+          pagination={{ el: ".swiper-pagination", clickable: true }}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            clickable: true,
+          }}
+          modules={[EffectCoverflow, Pagination, Navigation]}
+          className="swiper_container"
+        >
+          {latestmovie.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/movie/${movie.id}`}
+              >
+                <div className="container1">
+                  <div className="partImage">
+                    <img
+                      alt="thumnsil"
+                      src={`https://image.tmdb.org/t/p/original${
+                        movie && movie.backdrop_path
+                      }`}
+                    />
+                  </div>
+                  <div className="partimage-overlay">
+                    <div className="partimage-title">
+                      {movie ? movie.original_title : ""}
                     </div>
-                    <div className='partimage-overlay'>
-                      <div className='partimage-title'>{movie ? movie.original_title: ""}</div>
-                    <div className='partimage-run'>
+                    <div className="partimage-run">
                       {movie ? movie.release_date : ""}
-                      <span className='partimage-rating'>
+                      <span className="partimage-rating">
                         {movie ? movie.vote_average : ""}
                       </span>
                     </div>
-                    <div className='partimage-desc'>{movie ? movie.overview : ""}</div>
+                    <div className="partimage-desc">
+                      {movie ? movie.overview : ""}
+                    </div>
                   </div>
-                  </div>
-                </Link>
-                </SwiperSlide>
-            ))
-         }
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
           <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </div>
-          <div className="swiper-button-next slider-arrow">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
+            <div className="swiper-button-prev slider-arrow">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </div>
+            <div className="swiper-button-next slider-arrow">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
           </div>
         </Swiper>
-}
-
-        <TopratedList />
-        
+      )}
+      <div className="allCategoriesContainer">
+        <TopHomeList />
+        <ActionHomeList />
+        <ComedyHomeList />
+        <DocHomeList />
+        <HorrorHomeList />
+        <RomanceHomeList /> 
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

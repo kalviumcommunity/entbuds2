@@ -6,22 +6,24 @@ import Cards from '../Slide/Card';
 const ActionList = () => {
 
     const [actionmovie, setActionMovie] = useState([]);
+    const [page, setPage] = useState(1);
+    
 
     useEffect(() => {
-        axios.get(wants.getaction)
+        axios.get(`${wants.getaction}&page=${page}`)
         .then(response => {
-            setActionMovie(response.data.results)
+            setActionMovie(prevMovies => [...prevMovies, ...response.data.results])
         })
-    }, []);
+    }, [page]);
 
   return (
     <div>
-      <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+      <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
       <div className="listCard">
                 {
@@ -30,6 +32,7 @@ const ActionList = () => {
                     ))
                 }
             </div>
+            <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './Navbar.css'
-import cinebuds from './entbuds.png'
+import './Navbar.css';
+import cinebuds from './entbuds.png';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
             <Link to="/"><img src={cinebuds} className='logo' alt='logo'></img></Link>
             <div className='spans'>
             <span id='pop'>Popular</span>
-            {/* <span id='top'>Top Rated</span> */}
+            <Link to="movies/toprated"><span id='top'>Top Rated</span></Link>
             <span onClick={handleDropdown}>Categories</span>
             {showDropdown && (
                                 <div className="dropdown-content">

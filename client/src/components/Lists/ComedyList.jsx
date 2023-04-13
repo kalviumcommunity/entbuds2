@@ -7,23 +7,25 @@ import Cards from '../Slide/Card';
 const ComedyList = () => {
 
     const [comedymovie, setComedyMovie] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        axios.get(wants.getcomedy)
+        axios.get(`${wants.getcomedy}&page=${page}`)
         .then(response => {
-            setComedyMovie(response.data.results)
+            setComedyMovie(prevMovies => [...prevMovies, ...response.data.results])
         })
-    }, []);
+    }, [page]);
+    
 
   return (
     
     <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
       <div className="listCard">
                 {
@@ -32,6 +34,7 @@ const ComedyList = () => {
                     ))
                 }
             </div>
+            <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
     </div>
   )
 }
