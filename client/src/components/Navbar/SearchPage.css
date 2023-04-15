@@ -1,0 +1,8 @@
+.searchbar{
+    width: 40%;
+    height: 2em;
+    background-color: rgb(71, 70, 70);
+    border:  solid red;
+    border-radius: 1em;
+    margin-top: 4em;
+}

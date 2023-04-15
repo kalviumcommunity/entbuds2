@@ -30,7 +30,7 @@ const ComedyList = () => {
       <div className="listCard">
                 {
                     comedymovie.map((movie,index) => (
-                        <Cards key={index} movie = {movie} />
+                        <Cards key={index} movie={movie} />
                     ))
                 }
             </div>

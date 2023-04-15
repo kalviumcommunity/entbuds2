@@ -29,6 +29,8 @@ const TopHomeList = () => {
           <div className="mainthing">
             {topratedmovie.map((topratedmovie, index) => {
               return (
+                <Link
+                to={`/movie/${topratedmovie.id}`}>
                 <div className="postcard">
                 <img
                   key={index} className="Posterimage"
@@ -38,6 +40,7 @@ const TopHomeList = () => {
                   alt="movies"
                 />
                 </div>
+                </Link>
               );
             })}
           </div>
