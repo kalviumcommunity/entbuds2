@@ -24,20 +24,7 @@
     color: red;
   }
   
-  .showMore_Icon{
-    width: 20vmin;
-    max-width: fit-content+2vmin;
-    background-color: rgb(50, 50, 50);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 3vmin;
-    cursor: pointer;
-  }
-  
-  #showMoreIcon{
-    height: 2.5vmin;
-  }
+
   
   .Containerbottom{
     width: 100%;

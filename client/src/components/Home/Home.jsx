@@ -8,7 +8,7 @@ import "swiper/swiper-bundle.css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { EffectCoverflow, Pagination, Navigation } from "swiper";
+import { Autoplay, EffectCoverflow, Pagination, Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import TopHomeList from "../Homelists/TopRatedHome";
 import ActionHomeList from "../Homelists/ActionHome";
@@ -40,14 +40,14 @@ const Home = () => {
           loop={true}
           slidesPerView={"auto"}
           autoplay={{
-            delay: 1000,
+            delay: 4000,
             disableOnInteraction: false
           }}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
             depth: 100,
-            modifier: 2.5,
+            modifier: 0,
           }}
           pagination={{ el: ".swiper-pagination", clickable: true }}
           navigation={{
@@ -55,7 +55,7 @@ const Home = () => {
             prevEl: ".swiper-button-prev",
             clickable: true,
           }}
-          modules={[EffectCoverflow, Pagination, Navigation]}
+          modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
           className="swiper_container"
         >
           {latestmovie.map((movie) => (

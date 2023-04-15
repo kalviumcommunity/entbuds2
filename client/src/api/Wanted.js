@@ -6,7 +6,8 @@ const wants = {
     getcomedy: `/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=35`,
     getromance: `/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=10749`,
     getdocumentaries: `/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=99`,
-    getsearch: `/search/movie?api_key=${process.env.REACT_APP_API_KEY}`
+    getsearch: `/search/movie?api_key=${process.env.REACT_APP_API_KEY}`,
+    getdetails: `/movie/`
 }
 
 export default wants;

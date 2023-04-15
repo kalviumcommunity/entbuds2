@@ -29,6 +29,8 @@ const HorrorHomeList = () => {
           <div className="mainthing">
             {horrorhomemovie.map((horrorhomemovie, index) => {
               return (
+                <Link
+                to={`/movie/${horrorhomemovie.id}`}>
                 <div className="postcard">
                 <img
                   key={index} className="Posterimage"
@@ -38,6 +40,7 @@ const HorrorHomeList = () => {
                   alt="movies"
                 />
                 </div>
+                </Link>
               );
             })}
           </div>
