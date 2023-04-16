@@ -20,7 +20,7 @@ router.get("review/:title", async (req, resp) => {
 router.post("/review", async (req, resp) => {
     const {title, reviews} = req.body;
     try{
-        const review = await Review.craete({
+        const review = await Review.create({
             title, reviews
         });
         if(!review){

@@ -3,6 +3,7 @@ import "./FilmPage.css";
 import axios from "../../api/Axios";
 import wants from "../../api/Wanted";
 import { useParams } from "react-router-dom";
+import YTReviews from "./YTReviews";
 
 const FilmPage = () => {
   const [allabout, setallabout] = useState([]);
@@ -100,7 +101,19 @@ const FilmPage = () => {
             ))}
           </div>
           </div>
+          {allabout && (
+            <YTReviews title={allabout ? allabout.original_title : ""} />
+          )}
+
+<br></br>
+      <br></br>
+
+
+          
+
     </div>
+    
+    
   );
 };
 
