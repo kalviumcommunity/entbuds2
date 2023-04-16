@@ -21,7 +21,7 @@ const ComedyHomeList = () => {
           <div
             className="Linkpart"
           >
-           <Link to= "movies/comedy" style={{textDecoration: "none"}}><h4>Show more</h4></Link>
+           <Link to= "movies/comedy" style={{textDecoration: "none", color: "white"}}><h4>Show more</h4></Link>
           </div>
          
         </div>

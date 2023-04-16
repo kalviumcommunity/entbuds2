@@ -21,7 +21,7 @@ const TopHomeList = () => {
           <div
             className="Linkpart"
           >
-            <Link to="movies/toprated"><h4>Show more</h4></Link>
+            <Link to="movies/toprated" style={{textDecoration: "none", color: "white"}}><h4>Show more</h4></Link>
           </div>
           {console.log(topratedmovie)}
         </div>

@@ -21,7 +21,7 @@ const DocHomeList = () => {
           <div
             className="Linkpart"
           >
-            <Link to= "movies/documentary"><h4>Show more</h4></Link>
+            <Link to= "movies/documentary" style={{textDecoration: "none", color: "white"}}><h4>Show more</h4></Link>
           </div>
           
         </div>

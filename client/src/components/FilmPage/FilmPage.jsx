@@ -17,6 +17,7 @@ const FilmPage = () => {
       .then((response) => {
         setallabout(response.data);
       });
+      window.scrollTo(0, 0)
   }, [id]);
 
   return (
