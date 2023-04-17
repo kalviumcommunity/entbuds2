@@ -9,7 +9,7 @@ const YTReviews = ({filmId, title}) => {
     const [YTrevs, setYTrevs] = useState([]);
 
 useEffect(() => {
-    axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${title}moviereview&type=video&key=AIzaSyA6VNtaf_n3m7LV6ln9zGdrXUBLeRJdCJY`)
+    axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${title}moviereview&type=video&key=${process.env.REACT_APP_API_KEY2}`)
     .then(response => setYTrevs(response.data.items))
 }, [title])
 
