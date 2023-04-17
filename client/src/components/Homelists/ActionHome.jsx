@@ -21,7 +21,7 @@ const ActionHomeList = () => {
           <div
             className="Linkpart"
           >
-            <Link to= "movies/action"><h4>Show more</h4></Link>
+            <Link to= "movies/action" style={{textDecoration: "none", color: "white"}}><h4>Show more</h4></Link>
           </div>
           {console.log(actionhomemovie)}
         </div>

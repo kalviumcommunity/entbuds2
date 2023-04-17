@@ -17,11 +17,11 @@ const RomanceHomeList = () => {
     <>
       <div className="Container">
         <div className="Containertop">
-          <h1 className="categorYHeadings"> Romantic </h1>
+          <h1 className="Heading"> Romantic </h1>
           <div
             className="Linkpart"
           >
-            <Link to= "movies/romance"><h4>Show more</h4></Link>
+            <Link to= "movies/romance" style={{textDecoration: "none", color: "white"}}><h4>Show more</h4></Link>
           </div>
           
         </div>

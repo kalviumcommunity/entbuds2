@@ -22,6 +22,11 @@
   align-items: center;
 }
 
+.right{
+  margin-top: 1em;
+  margin-right: -5em;
+}
+
 .spans {
   margin-right: 60vw;
 }

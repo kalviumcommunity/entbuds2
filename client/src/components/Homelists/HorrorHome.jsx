@@ -21,7 +21,7 @@ const HorrorHomeList = () => {
           <div
             className="Linkpart"
           >
-            <Link to= "movies/horror"><h4>Show more</h4></Link>
+            <Link to= "movies/horror" style={{textDecoration: "none", color: "white"}}><h4>Show more</h4></Link>
           </div>
           
         </div>
