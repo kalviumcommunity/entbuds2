@@ -4,9 +4,15 @@ import axios from "../../api/Axios";
 import wants from "../../api/Wanted";
 import { useParams } from "react-router-dom";
 import YTReviews from "./YTReviews";
+import UserReviews from "./UserReviews";
+import { Button } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const FilmPage = () => {
-  const [allabout, setallabout] = useState([]);
+  const { user } = useAuth0();
+  const [allabout, setallabout] = useState();
+  const [review, setReview] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,8 +23,80 @@ const FilmPage = () => {
       .then((response) => {
         setallabout(response.data);
       });
-      window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [id]);
+
+  const handleClick = async () => {
+    if (review !== "") {
+      await fetch(
+        `${process.env.REACT_APP_DATABASE}/api/review/${allabout.original_title}`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (!data.exist) {
+             fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
+              method: "POST",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify({
+                title: allabout.original_title,
+                reviews: {
+                  review: review,
+                  name: user.name,
+                  image: user.picture,
+                },
+              }),
+            })
+              .then((resp) => {
+                if (!resp.ok) {
+                  throw new Error("Network response was not ok.");
+                }
+                return resp.json();
+              })
+              .then((data) => {
+                console.log(data);
+              })
+              .catch((e) => {
+                console.log(e);
+              });
+          } else {
+             fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
+              method: "PUT",
+              headers: { "Content-type": "application/json" },
+              body: JSON.stringify({
+                title: allabout.original_title,
+                reviews: {
+                  name: user.name,
+                  review: review,
+                  image: user.picture,
+                },
+              }),
+            })
+              .then((resp) => {
+                if (!resp.ok) {
+                  throw new Error("Network response was not ok.");
+                }
+                return resp.json();
+              })
+              .then((data) => {
+                console.log(data);
+              })
+              .catch((e) => {
+                console.log(e);
+              });
+          }
+        })
+        .catch((error) => {
+          console.error("There was a problem fetching the data:", error);
+        });
+    } else {
+      alert("Please fill the field");
+    }
+  };
 
   return (
     <div className="chosen">
@@ -67,54 +145,87 @@ const FilmPage = () => {
             <h1>Useful Links</h1>
             {allabout && allabout.homepage && (
               <a
-              href = {allabout.homepage}
-              target="ok"
-              rel="refer"
-              style={{textDecoration: "none"}}>
+                href={allabout.homepage}
+                target="ok"
+                rel="refer"
+                style={{ textDecoration: "none" }}
+              >
                 <span className="homebutton"> Home</span>
               </a>
             )}
             {allabout && allabout.imdb_id && (
               <a
-              href = {"https://www.imdb.com/title/" + allabout.imdb_id}
-              target="ok"
-              rel="refer"
-              style={{textDecoration: "none"}}>
+                href={"https://www.imdb.com/title/" + allabout.imdb_id}
+                target="ok"
+                rel="refer"
+                style={{ textDecoration: "none" }}
+              >
                 <span className="imdbbutton"> IMDB</span>
               </a>
             )}
+          </div>
+        </div>
+      </div>
+      <div className="prodpart">
+        <h1 className="productionheading"> Production Companies</h1>
+        <div className="productions">
+          {allabout &&
+            allabout.production_companies &&
+            allabout.production_companies.map(
+              (company) =>
+                company.logo_path && (
+                  <div className="companyimage">
+                    <img
+                      className="companyname"
+                      src={
+                        "https://image.tmdb.org/t/p/original" +
+                        company.logo_path
+                      }
+                      alt="company"
+                    />
+                  </div>
+                )
+            )}
+        </div>
+      </div>
+      {allabout && (
+        <YTReviews title={allabout ? allabout.original_title : ""} />
+      )}
 
-          </div>
-          </div>
-          </div>
-          <div className="prodpart">
-          <h1 className="productionheading"> Production Companies</h1>
-          <div className="productions">
-            {allabout && allabout.production_companies && 
-            allabout.production_companies.map((company) => (
-              company.logo_path && (
-                <div className="companyimage">
-                  <img className="companyname"
-                  src={"https://image.tmdb.org/t/p/original" + company.logo_path}
-                  alt="company" />
-                </div>
-              )
-            ))}
-          </div>
-          </div>
-          {allabout && (
-            <YTReviews title={allabout ? allabout.original_title : ""} />
-          )}
-
-<br></br>
+      <br></br>
       <br></br>
 
+      <div className="inputs">
+        <div className="review-section">
+          <h2 color="red">Reviews</h2>
+          { allabout && (
+          <UserReviews name={allabout ? allabout.original_title : ""} />
+          )}
+          <textarea
+            value={review}
+            type="text"
+            className="review"
+            placeholder="Type your review here"
+            onChange={(e) => setReview(e.target.value)}
+          />
 
-          
-
+          <Button
+            onClick={handleClick}
+            variant="contained"
+            size="small"
+            style={{
+              fontSize: "1.2rem",
+              background: "red",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            Post
+          </Button>
+        </div>
+      </div>
     </div>
-    
-    
   );
 };
 

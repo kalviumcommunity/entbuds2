@@ -121,3 +121,26 @@
   width: 200px;
   margin: 2rem;
 }
+
+.review{
+  width: 84vw;
+  margin-bottom: 2rem;
+  height: 4vh;
+  border-radius: 0.5em;
+  border: none;
+  border-bottom: 1px red solid;
+  font-size: 1rem;
+  background-color: rgb(51, 49, 49);
+  color: #fef2f0;
+}
+
+
+.review::placeholder{
+  color: #fff;
+}
+
+.review-section h2{
+  color: red;
+  text-align: start;
+
+}

@@ -1,22 +1,28 @@
-const express = require("express")
-const cors = require("cors")
-const mongoose = require("mongoose")
-
-const app = express()
+const dotenv = require("dotenv");
+dotenv.config();
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const reviewRouter = require("./routes/extreview");
+const PORT = process.env.PORT;
+const DB = process.env.DB;
+const app = express();
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
+app.use("/api", reviewRouter);
 
-mongoose.connect("mongodb://localhost:27017/EntBuds", {
-    useNewUrlParser: true ,
-    useUnifiedTopology: true ,
-    family: 4
-})
-.then(() => {
-    app.listen("4000", () => {
-        console.log("Connection Successful");
+mongoose
+  .connect("mongodb://localhost:27017/CineBuds", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    family: 4,
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Database connected and listening on PORT:${PORT}`);
     });
-})
-.catch((error) => {
+  })
+  .catch((error) => {
     console.log(error);
-})
+  });
