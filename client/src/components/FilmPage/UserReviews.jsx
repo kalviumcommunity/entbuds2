@@ -9,7 +9,7 @@ const UserReviews = (props) => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:7000/api/review/${name}`)
+    fetch(`${process.env.REACT_APP_DATABASE}/api/review/${name}`)
     .then((response) => response.json())
       .then((data) => {
         if (data.exist) {
