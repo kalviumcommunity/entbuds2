@@ -36,7 +36,7 @@ const Navbar = () => {
                 <div className='left'>
             <Link to="/"><img src={cinebuds} className='logo' alt='logo'></img></Link>
             <div className='spans'>
-            <span id='pop'>Popular</span>
+            
             <Link to="movies/toprated" style={{textDecoration: "none"}}><span id='top'>Top Rated</span></Link>
             <span onClick={handleDropdown}>Categories</span>
             {showDropdown && (

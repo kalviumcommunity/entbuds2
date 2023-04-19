@@ -13,9 +13,7 @@ app.use(express.json());
 app.use("/api", reviewRouter);
 
 mongoose
-  .connect("mongodb://localhost:27017/CineBuds", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  .connect(DB, {
     family: 4,
   })
   .then(() => {
