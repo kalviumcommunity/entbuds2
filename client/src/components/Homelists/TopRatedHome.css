@@ -48,7 +48,9 @@
   
   .Posterimage{
     height: 35vmin;
+    min-height: 18em;
     width: 28vmin;
+    min-width: 14xxxem;
     min-width: 12em;
     overflow: hidden;
     border-radius: 0.2em;

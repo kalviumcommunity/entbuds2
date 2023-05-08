@@ -7,17 +7,28 @@ const reviewSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    reviews: {
-      type: [
-        {
-          name: { type: String, required: true },
-          review: { type: String, required: true },
-          image: { type: String, required: true },
+    reviews: [
+      {
+        name: {
+          type: String,
+          required: true,
         },
-      ],
-    },
+        review: {
+          type: String,
+          required: true,
+        },
+        image: {
+          type: String,
+          required: true,
+        },
+        likes: {
+          type: [String],
+          default: [],
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("review", reviewSchema);
+module.exports = mongoose.model("Review", reviewSchema);

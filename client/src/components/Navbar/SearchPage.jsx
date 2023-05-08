@@ -5,13 +5,13 @@ import wants from '../../api/Wanted';
 import Cards from '../Slide/Card';
 import ActionList from '../Lists/ActionList';
 
-const SearchPage = () => {
+const SearchPage = () => { 
 
-    const [query, setQuery] = useState(''); //Used for the query which user will write on the search bar 
-  const [results, setResults] = useState([]); // The array which will contain the search results
-  const [page, setPage] = useState(1); //Setting up the page number which will be used by API to fetch data accordingly
-  const [showload, setshowload] = useState(false); // For showing the load more button
-  const [notblank, setnotblank] = useState(true); //When the page is opened, this one will help in covering the blank space
+    const [query, setQuery] = useState(''); 
+  const [results, setResults] = useState([]); 
+  const [page, setPage] = useState(1); 
+  const [showload, setshowload] = useState(false); 
+  const [notblank, setnotblank] = useState(true); 
 
 
   useEffect(() =>{
@@ -47,6 +47,7 @@ const SearchPage = () => {
       }
     } else{
       setResults([]);
+      setnotblank(true)
     }
   }
 

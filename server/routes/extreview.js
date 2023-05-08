@@ -24,7 +24,7 @@ router.post("/review", async (req, resp) => {
   try {
     const review = await Review.create({
       title,
-      reviews
+      reviews,
     });
     if (!review) {
       return resp.status(400).json(review);
@@ -41,7 +41,7 @@ router.put("/review", async (req, resp) => {
 
   try {
     const review = await Review.findOneAndUpdate(
-      {title},
+      { title },
       { $push: { reviews: reviews } },
       { new: true }
     );
@@ -54,4 +54,58 @@ router.put("/review", async (req, resp) => {
     resp.status(500).json({ error: e.message });
   }
 });
+
+router.delete("/review/:title/:_id", async (req, resp) => {
+  const { title, _id } = req.params;
+
+  try {
+    const review = await Review.findOneAndUpdate(
+      { title },
+      { $pull: { reviews: { _id } } },
+      { new: true }
+    );
+    if (!review) {
+      resp.status(400).json(review);
+    } else {
+      resp.status(200).json(review);
+    }
+  } catch (e) {
+    resp.status(500).json({ error: e.message });
+  }
+});
+
+router.put("/review/like/:title/:_id/:email", async (req, resp) => {
+  const { email, title, _id } = req.params;
+  try {
+    const movie = await Review.findOne({ title });
+    if (movie) {
+      const review = movie.reviews.find((r) => r._id.toString() === _id);
+      if (review) {
+        if (review.likes && review.likes.includes(email)) {
+          review.likes = review.likes.filter((item) => item !== email);
+        } else {
+          if (!review.likes) {
+            review.likes = [email];
+          } else {
+            review.likes.push(email);
+          }
+        }
+        await movie.save();
+        const UpdatedReview = movie.reviews.find(
+          (r) => r._id.toString() === _id
+        );
+        resp.status(200).json(UpdatedReview);
+      } else {
+        resp.status(404).json({ mssg: "Review not found" });
+      }
+    } else {
+      resp.status(400).json({ mssg: "Movie not found" });
+    }
+  } catch (e) {
+    resp.status(500).json({ mssg: e.message });
+  }
+});
+
+
+
 module.exports = router;

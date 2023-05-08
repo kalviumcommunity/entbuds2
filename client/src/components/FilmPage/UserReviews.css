@@ -26,13 +26,19 @@
 
 
 .ppic{
-    margin-left: 30px;
+    height: 3em;
+    margin-left: -3px;
+    border-radius: 70%;
 }
 
 .letsrevw{
     display: flex;
     width: 90%;
-    padding: 7px;
+    padding: 5px;
+}
+
+.textrev{
+    padding-left: 1em;
 }
 
 

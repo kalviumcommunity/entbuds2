@@ -109,6 +109,10 @@
   justify-content: center;
 }
 
+.ytrevs{
+  width: 100%;
+}
+
 .productions {
   display: flex;
   justify-content: center;
@@ -143,4 +147,22 @@
   color: red;
   text-align: start;
 
+}
+@media screen and(max-width:662px) {
+  .chosen{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .introduction{
+    width: 100%;
+  }
+
+  .ytrevs{
+    display: none;
+  }
+  .thumbbox{
+    display: grid;
+    grid-template-columns: auto;
+  }
 }
