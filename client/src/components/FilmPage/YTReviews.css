@@ -15,3 +15,38 @@
     height: 500px ;
    
 }
+
+@media (max-width: 767px) {
+    .carousel-container {
+      max-width: 100%;
+    }
+
+    .ytrevs{
+        width: 100%;
+    }
+    
+    .ytvideo {
+      width: 3em;
+     
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .carousel-container {
+      max-width: 6em;
+    }
+    
+    .ytvideo {
+      width: 1em;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .carousel-container {
+      max-width: 800px;
+    }
+    
+    .ytvideo {
+      width: 1em;
+    }
+  }

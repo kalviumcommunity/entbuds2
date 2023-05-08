@@ -63,3 +63,30 @@ swiper-button-prev slider-arrow{
     flex-direction: column;
     align-items: center;
 }
+
+@media (max-width: 768px) {
+    .swiper_container {
+      height: 400px;
+    }
+    .partimage-overlay{
+        display: none;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .swiper_container {
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 414px) {
+    .swiper_container {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .swiper_container {
+      height: 220px;
+    }
+  }

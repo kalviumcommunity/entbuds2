@@ -47,6 +47,7 @@ const SearchPage = () => {
       }
     } else{
       setResults([]);
+      setnotblank(true)
     }
   }
 

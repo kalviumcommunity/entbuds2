@@ -8,10 +8,10 @@ import UserReviews from "./UserReviews";
 import { Button } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
 const FilmPage = () => {
   const { user } = useAuth0();
   const [allabout, setallabout] = useState();
+  const [render, setRender] = useState(true);
   const [review, setReview] = useState("");
   const { id } = useParams();
 
@@ -39,7 +39,7 @@ const FilmPage = () => {
         })
         .then((data) => {
           if (!data.exist) {
-             fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
+            fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
               method: "POST",
               headers: { "Content-type": "application/json" },
               body: JSON.stringify({
@@ -55,16 +55,18 @@ const FilmPage = () => {
                 if (!resp.ok) {
                   throw new Error("Network response was not ok.");
                 }
-                return resp.json();
               })
               .then((data) => {
                 console.log(data);
+                setRender(!render);
+                setReview("");
+                // window.location.reload();
               })
               .catch((e) => {
                 console.log(e);
               });
           } else {
-             fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
+            fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
               method: "PUT",
               headers: { "Content-type": "application/json" },
               body: JSON.stringify({
@@ -79,8 +81,12 @@ const FilmPage = () => {
               .then((resp) => {
                 if (!resp.ok) {
                   throw new Error("Network response was not ok.");
+                } else {
+                  resp.json();
+                  setRender(!render);
+                  setReview("");
+                  // window.location.reload();
                 }
-                return resp.json();
               })
               .then((data) => {
                 console.log(data);
@@ -189,7 +195,10 @@ const FilmPage = () => {
         </div>
       </div>
       {allabout && (
-        <YTReviews title={allabout ? allabout.original_title : ""} />
+        <YTReviews
+          title={allabout ? allabout.original_title : ""}
+          className="ytrevs"
+        />
       )}
 
       <br></br>
@@ -198,8 +207,12 @@ const FilmPage = () => {
       <div className="inputs">
         <div className="review-section">
           <h2 color="red">Reviews</h2>
-          { allabout && (
-          <UserReviews name={allabout ? allabout.original_title : ""} />
+          {allabout && (
+            <UserReviews
+              key={render}
+              render={render}
+              name={allabout ? allabout.original_title : ""}
+            />
           )}
           <textarea
             value={review}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
 import cinebuds from './entbuds.png';
 import { Link } from 'react-router-dom';
@@ -9,8 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
     const [nottransparent, letstransp] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
-
-    const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
+    const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
     const transparentTransition = () => {
         if(window.scrollY > 140){
@@ -25,9 +24,11 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", transparentTransition)
     }, [])
 
+
     const handleDropdown = () => {
         setShowDropdown(!showDropdown); // toggle dropdown visibility
     }
+
 
   return (
     <div>
@@ -41,7 +42,6 @@ const Navbar = () => {
             <span onClick={handleDropdown}>Categories</span>
             {showDropdown && (
                                 <div className="dropdown-content">
-                                    {/* Add dropdown content here */}
                                     <Link to="movies/horror" style={{textDecoration: "none"}}><span>Horror</span></Link>
                                     <Link to="movies/action" style={{textDecoration: "none"}}><span>Action</span></Link>
                                     <Link to="movies/comedy" style={{textDecoration: "none"}}><span>Comedy</span></Link>
