@@ -106,6 +106,39 @@ router.put("/review/like/:title/:_id/:email", async (req, resp) => {
   }
 });
 
+router.post("/review/reply/:title/:parent_id", async (req, resp) => {
+  const { title, parent_id } = req.params;
+  const { text, user, userimage } = req.body;
 
+  try {
+    const movie = await Review.findOne({ title });
+
+    if (movie) {
+      const parentReview = movie.reviews.find(
+        (r) => r._id.toString() === parent_id
+      );
+
+      if (parentReview) {
+        const reply = {
+          text,
+          user,
+          userimage,
+          likes: [],
+        };
+
+        parentReview.replies.push(reply);
+        await movie.save();
+
+        resp.status(200).json(reply);
+      } else {
+        resp.status(404).json({ mssg: "Parent review not found" });
+      }
+    } else {
+      resp.status(400).json({ mssg: "Movie not found" });
+    }
+  } catch (e) {
+    resp.status(500).json({ mssg: e.message });
+  }
+});
 
 module.exports = router;

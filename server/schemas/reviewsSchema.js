@@ -25,6 +25,14 @@ const reviewSchema = new mongoose.Schema(
           type: [String],
           default: [],
         },
+        replies: [
+          {
+            text: String,
+            user: String,
+            userimage: String,
+            likes: [String],
+          },
+        ],
       },
     ],
   },
