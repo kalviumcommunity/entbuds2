@@ -34,12 +34,36 @@
 .letsrevw{
     display: flex;
     width: 90%;
-    padding: 5px;
+    padding: 1em;
 }
 
 .textrev{
     padding-left: 1em;
+    display: flex;
+    justify-content: space-between;
 }
+
+.btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 49em;
+}
+/* .like-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #3b5998;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+
+  /* Style for the button when it's clicked */
+  .like-btn.clicked {
+    background-color: #1d4088;
+  }
 
 
 
