@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from '../../api/Axios';
 import wants from '../../api/Wanted';
 import Cards from '../Slide/Card';
@@ -11,31 +11,31 @@ const DocumentaryList = () => {
 
     useEffect(() => {
         axios.get(`${wants.getdocumentaries}&page=${page}`)
-        .then(response => {
-            setDocumentary(prevMovies => [...prevMovies, ...response.data.results])
-        })
+            .then(response => {
+                setDocumentary(prevMovies => [...prevMovies, ...response.data.results])
+            })
     }, [page]);
 
-  return (
-    
-    <div>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        
-      <div className="listCard">
+    return (
+
+        <div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div className="listCard">
                 {
-                    documentary.map((movie,index) => (
-                        <Cards key={index} movie = {movie} />
+                    documentary.map((movie, index) => (
+                        <Cards key={index} movie={movie} />
                     ))
                 }
             </div>
             <button onClick={() => setPage(prevPage => prevPage + 1)}>Load More</button>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default DocumentaryList

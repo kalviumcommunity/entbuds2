@@ -127,17 +127,25 @@
 }
 
 .review{
-  width: 84vw;
-  margin-bottom: 2rem;
-  height: 4vh;
+  width: 63vw;
+  height: 7vh;
   border-radius: 0.5em;
-  border: none;
-  border-bottom: 1px red solid;
   font-size: 1rem;
   background-color: rgb(51, 49, 49);
-  color: #fef2f0;
 }
 
+.review-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 6.3em;
+  padding: 2em;
+}
+
+.userrevs{
+  background-color: rgb(74, 72, 72);
+  padding: 1em;
+  border-radius: 2em;
+}
 
 .review::placeholder{
   color: #fff;
@@ -145,7 +153,8 @@
 
 .review-section h2{
   color: red;
-  text-align: start;
+  text-align: left;
+  margin-left: -4.7em;
 
 }
 @media screen and(max-width:662px) {

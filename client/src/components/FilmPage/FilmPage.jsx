@@ -5,7 +5,7 @@ import wants from "../../api/Wanted";
 import { useParams } from "react-router-dom";
 import YTReviews from "./YTReviews";
 import UserReviews from "./UserReviews";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const FilmPage = () => {
@@ -207,18 +207,11 @@ const FilmPage = () => {
       <div className="inputs">
         <div className="review-section">
           <h2 color="red">Reviews</h2>
-          {allabout && (
-            <UserReviews
-              key={render}
-              render={render}
-              name={allabout ? allabout.original_title : ""}
-            />
-          )}
-          <textarea
+          <div className="review-container">
+          <TextField
             value={review}
-            type="text"
             className="review"
-            placeholder="Type your review here"
+            label="Type your review here"
             onChange={(e) => setReview(e.target.value)}
           />
 
@@ -232,10 +225,22 @@ const FilmPage = () => {
               color: "black",
               display: "flex",
               alignItems: "center",
+              height: "2em"
             }}
           >
             Post
           </Button>
+          </div>
+
+          {allabout && (
+            <div className="userrevs">
+            <UserReviews
+              key={render}
+              render={render}
+              name={allabout ? allabout.original_title : ""}
+            />
+            </div>
+          )}
         </div>
       </div>
     </div>
