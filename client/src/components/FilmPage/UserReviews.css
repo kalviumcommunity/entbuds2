@@ -1,4 +1,4 @@
-*{
+/* *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -33,8 +33,8 @@
 
 .letsrevw{
     display: flex;
-    width: 90%;
-    padding: 1em;
+    width: 100%;
+    padding: 0.3em;
 }
 
 .textrev{
@@ -56,4 +56,120 @@
 }
 
 
+.replies{
+    padding: 1em;
+    text-align: left;
+}
 
+.replysection{
+    padding: 0.8em;
+    background-color: rgb(64, 63, 63);
+    border-radius: 2em;
+    margin-top: 1em;
+}
+
+.handle{
+    display: flex;
+    gap: 1em;
+}
+
+
+ */
+
+ .letsrevw {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .ppic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .textrev {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .mainrev {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-left: -28em;
+  }
+  
+  h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .likes {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .like-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  .replysection {
+    margin-top: 10px;
+  }
+  
+  .replyhere {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .btns {
+    display: flex;
+    gap: 1em;
+    align-items: flex-start;
+  }
+  
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+  
+  button:hover {
+    text-decoration: underline;
+  }
+  
+  .replies {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .reply {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .reply p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .reply b {
+    margin-right: 5px;
+  }
+  

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./UserReviews.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, ToggleButton } from "@mui/material";
+import { Button, TextField, ToggleButton } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const UserReviews = (props) => {
@@ -39,7 +39,7 @@ const UserReviews = (props) => {
 
   const handleEditReview = async (e, review) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DATABASE}/api/review/edit/${name}/${review._id}`,
@@ -66,7 +66,7 @@ const UserReviews = (props) => {
       console.log(e);
     }
   };
-  
+
 
   const handleDeleteReview = async (e, review) => {
     try {
@@ -167,35 +167,31 @@ const UserReviews = (props) => {
                   <p key={review._id}>
                     <i>"{review.review}"</i>
                   </p>
-                  <button
-                    onClick={() => {
-                      handleshowreply(!showreply);
-                    }}
-                  ></button>
-                  
+
+
                   {showEditForm && (
-                        <form onSubmit={(e) => handleEditReview(e, review)}>
-                          <input
-                            type="text"
-                            placeholder="Edit Review"
-                            value={editText}
-                            onChange={(e) => setEditText(e.target.value)}
-                          />
-                          <button type="submit">Save</button>
-                        </form>
-                      )}
+                    <form onSubmit={(e) => handleEditReview(e, review)}>
+                      <input
+                        type="text"
+                        placeholder="Edit Review"
+                        value={editText}
+                        onChange={(e) => setEditText(e.target.value)}
+                      />
+                      <button type="submit">Save</button>
+                    </form>
+                  )}
 
                   {showreply && (
-                    <div>
+                    <div className="replysection">
                       {review.replies && (
                         <div className="replies">
                           {review.replies.map((reply) => (
                             <div className="reply" key={reply._id}>
-                              <img
+                              {/* <img
                                 className="replyimage"
                                 src={reply.userimage}
                                 alt="img"
-                              ></img>
+                              ></img> */}
                               <div>
                                 <p>
                                   <b>{reply.user}</b>: {reply.text}
@@ -206,14 +202,21 @@ const UserReviews = (props) => {
                         </div>
                       )}
 
-                      <form onSubmit={(e) => handleReplyReview(e, review)}>
-                        <input
-                          type="text"
+                      <form onSubmit={(e) => handleReplyReview(e, review)} className="handle">
+                        <TextField
+                        className="replyhere"
                           placeholder="Reply"
                           value={replyText}
                           onChange={(e) => setReplyText(e.target.value)}
                         />
-                        <button type="submit">Submit</button>
+                        <Button type="submit"
+                        style={{
+                          background: "red",
+                          color: "black",
+                          display: "flex",
+                          alignItems: "center",
+                          height: "2em"
+                        }}>Submit</Button>
                       </form>
                     </div>
                   )}
@@ -221,7 +224,7 @@ const UserReviews = (props) => {
 
                 <div className="btns">
                   <div className="likes">
-                    {review.likes.length} 
+                    {review.likes.length}
                     <ToggleButton
                       className="like-btn"
                       onClick={(e) => handleLikeReview(e, review)}
@@ -234,18 +237,30 @@ const UserReviews = (props) => {
                     </ToggleButton>
                   </div>
 
-                  <button onClick={() => handleShowEditForm(review.review)}>
+                  {/* <button onClick={() => handleShowEditForm(review.review)}>
                     Edit
-                  </button>
+                  </button> */}
+                  <Button
+                    onClick={() => {
+                      handleshowreply(!showreply);
+                    }}
+                    style={{
+                      background: "red",
+                      color: "black",
+                      display: "flex",
+                      alignItems: "center",
+                      height: "2em"
+                    }}
+                  >Reply</Button>
 
                   <Button onClick={(e) => handleDeleteReview(e, review)}
-                  style={{
-                    background: "red",
-                    color: "black",
-                    display: "flex",
-                    alignItems: "center",
-                    height: "2em"
-                  }}
+                    style={{
+                      background: "red",
+                      color: "black",
+                      display: "flex",
+                      alignItems: "center",
+                      height: "2em"
+                    }}
                   >
                     Delete
                   </Button>
