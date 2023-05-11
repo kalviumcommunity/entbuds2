@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./UserReviews.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Button, ToggleButton } from "@mui/material";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const UserReviews = (props) => {
   const { user } = useAuth0();
@@ -9,6 +11,9 @@ const UserReviews = (props) => {
   const [CustReviews, setCustReviews] = useState([]);
   const [replyText, setReplyText] = useState("");
   const [showreply, handleshowreply] = useState(false);
+  const [editText, setEditText] = useState("");
+  const [showEditForm, setShowEditForm] = useState(false);
+
   const styling = {
     color: "white",
   };
@@ -26,6 +31,42 @@ const UserReviews = (props) => {
         console.log(e);
       });
   }, [name]);
+
+  const handleShowEditForm = (text) => {
+    setEditText(text);
+    setShowEditForm(true);
+  };
+
+  const handleEditReview = async (e, review) => {
+    e.preventDefault();
+  
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DATABASE}/api/review/edit/${name}/${review._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify({
+            text: editText,
+          }),
+        }
+      );
+      if (response.ok) {
+        const updatedReview = await response.json();
+        const updatedReviews = CustReviews.map((r) =>
+          r._id === updatedReview._id ? updatedReview : r
+        );
+        setCustReviews(updatedReviews);
+        setShowEditForm(false);
+        console.log("Review updated");
+      } else {
+        console.log("Review update failed");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  
 
   const handleDeleteReview = async (e, review) => {
     try {
@@ -131,6 +172,19 @@ const UserReviews = (props) => {
                       handleshowreply(!showreply);
                     }}
                   ></button>
+                  
+                  {showEditForm && (
+                        <form onSubmit={(e) => handleEditReview(e, review)}>
+                          <input
+                            type="text"
+                            placeholder="Edit Review"
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                          />
+                          <button type="submit">Save</button>
+                        </form>
+                      )}
+
                   {showreply && (
                     <div>
                       {review.replies && (
@@ -167,18 +221,34 @@ const UserReviews = (props) => {
 
                 <div className="btns">
                   <div className="likes">
-                    {review.likes.length} Likes
-                    <button
+                    {review.likes.length} 
+                    <ToggleButton
                       className="like-btn"
                       onClick={(e) => handleLikeReview(e, review)}
+                      style={{
+                        background: "red",
+                        height: "2em"
+                      }}
                     >
-                      Like
-                    </button>
+                      <FavoriteBorderIcon />
+                    </ToggleButton>
                   </div>
 
-                  <button onClick={(e) => handleDeleteReview(e, review)}>
-                    Delete
+                  <button onClick={() => handleShowEditForm(review.review)}>
+                    Edit
                   </button>
+
+                  <Button onClick={(e) => handleDeleteReview(e, review)}
+                  style={{
+                    background: "red",
+                    color: "black",
+                    display: "flex",
+                    alignItems: "center",
+                    height: "2em"
+                  }}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </div>
             </div>

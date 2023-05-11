@@ -55,6 +55,35 @@ router.put("/review", async (req, resp) => {
   }
 });
 
+router.put("/review/edit/:title/:_id", async (req, resp) => {
+  const { title, _id } = req.params;
+  const { text } = req.body;
+
+  try {
+    const movie = await Review.findOne({ title });
+
+    if (movie) {
+      const review = movie.reviews.find((r) => r._id.toString() === _id);
+
+      if (review) {
+        review.text = text;
+        await movie.save();
+
+        const updatedReview = movie.reviews.find((r) => r._id.toString() === _id);
+        resp.status(200).json(updatedReview);
+      } else {
+        resp.status(404).json({ mssg: "Review not found" });
+      }
+    } else {
+      resp.status(400).json({ mssg: "Movie not found" });
+    }
+  } catch (e) {
+    resp.status(500).json({ mssg: e.message });
+  }
+});
+
+
+
 router.delete("/review/:title/:_id", async (req, resp) => {
   const { title, _id } = req.params;
 
