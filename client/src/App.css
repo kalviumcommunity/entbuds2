@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Wix Madefor Display', sans-serif;
 }
 
 .App-logo {
