@@ -81,7 +81,10 @@ swiper-button-prev slider-arrow{
   
   @media (max-width: 414px) {
     .swiper_container {
-      height: 250px;
+      height: 25em;
+    }
+    .partimage{
+      height: 25em;
     }
   }
   

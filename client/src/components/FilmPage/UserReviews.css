@@ -76,14 +76,21 @@
 
  */
 
+ *{
+  padding: 0;
+  padding-bottom: 1px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
  .letsrevw {
     display: flex;
     margin-bottom: 20px;
   }
   
   .ppic {
-    width: 50px;
-    height: 50px;
+    width: 4em;
+    height: 4em;
     border-radius: 50%;
     margin-right: 10px;
   }
@@ -101,7 +108,7 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
-    margin-left: -28em;
+    margin-left: -65vb;
   }
   
   h3 {
@@ -113,7 +120,8 @@
     font-size: 14px;
     margin-bottom: 10px;
   }
-  
+
+ 
   .likes {
     display: flex;
     align-items: center;
@@ -129,10 +137,11 @@
   
   .replysection {
     margin-top: 10px;
+    margin-left: 3em;
   }
   
   .replyhere {
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 10px;
   }
   
@@ -140,6 +149,8 @@
     display: flex;
     gap: 1em;
     align-items: flex-start;
+    margin-left: 3em;
+    margin-top: -1em;
   }
   
   button {
@@ -162,6 +173,7 @@
   .reply {
     display: flex;
     margin-bottom: 10px;
+    gap: 1em;
   }
   
   .reply p {
@@ -172,4 +184,18 @@
   .reply b {
     margin-right: 5px;
   }
+
+  .userrepl{
+    text-align: left;
+  }
   
+  .replyform{
+    display: flexbox;
+    width: 7em;
+  }
+
+  .rpic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;    
+  }

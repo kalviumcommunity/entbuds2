@@ -68,6 +68,7 @@ const Home = () => {
                   <div className="partImage">
                     <img
                       alt="thumnsil"
+                      className="partimage"
                       src={`https://image.tmdb.org/t/p/original${
                         movie && movie.backdrop_path
                       }`}

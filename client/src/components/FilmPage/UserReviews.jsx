@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./UserReviews.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, TextField, ToggleButton } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ReplyIcon from '@mui/icons-material/Reply';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const UserReviews = (props) => {
   const { user } = useAuth0();
@@ -10,7 +14,7 @@ const UserReviews = (props) => {
   const { username } = props;
   const [CustReviews, setCustReviews] = useState([]);
   const [replyText, setReplyText] = useState("");
-  const [showreply, handleshowreply] = useState(false);
+  const [showreply, handleshowreply] = useState(true);
   const [editText, setEditText] = useState("");
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -130,7 +134,7 @@ const UserReviews = (props) => {
           body: JSON.stringify({
             text: replyText,
             user: user.name,
-            userimage: user.image,
+            userimage: user.picture,
           }),
         }
       );
@@ -165,7 +169,7 @@ const UserReviews = (props) => {
                 <div className="mainrev">
                   <h3>{review.name}</h3>
                   <p key={review._id}>
-                    <i>"{review.review}"</i>
+                    <p style={{ marginRight: "5.6em" }}>{review.review}</p>
                   </p>
 
 
@@ -181,90 +185,91 @@ const UserReviews = (props) => {
                     </form>
                   )}
 
-                  {showreply && (
-                    <div className="replysection">
-                      {review.replies && (
-                        <div className="replies">
-                          {review.replies.map((reply) => (
-                            <div className="reply" key={reply._id}>
-                              {/* <img
-                                className="replyimage"
-                                src={reply.userimage}
-                                alt="img"
-                              ></img> */}
-                              <div>
-                                <p>
-                                  <b>{reply.user}</b>: {reply.text}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
 
-                      <form onSubmit={(e) => handleReplyReview(e, review)} className="handle">
-                        <TextField
-                        className="replyhere"
-                          placeholder="Reply"
-                          value={replyText}
-                          onChange={(e) => setReplyText(e.target.value)}
-                        />
-                        <Button type="submit"
-                        style={{
-                          background: "red",
-                          color: "black",
-                          display: "flex",
-                          alignItems: "center",
-                          height: "2em"
-                        }}>Submit</Button>
-                      </form>
-                    </div>
-                  )}
                 </div>
 
                 <div className="btns">
                   <div className="likes">
-                    {review.likes.length}
-                    <ToggleButton
-                      className="like-btn"
-                      onClick={(e) => handleLikeReview(e, review)}
-                      style={{
-                        background: "red",
-                        height: "2em"
-                      }}
-                    >
-                      <FavoriteBorderIcon />
-                    </ToggleButton>
+
+
+
+                    <FavoriteBorderIcon onClick={(e) => handleLikeReview(e, review)}
+                      sx={{ fontSize: 16 }}
+                    />
+                    <b className="lc">{review.likes.length}</b>
+
+
                   </div>
 
-                  {/* <button onClick={() => handleShowEditForm(review.review)}>
-                    Edit
-                  </button> */}
-                  <Button
-                    onClick={() => {
-                      handleshowreply(!showreply);
-                    }}
-                    style={{
-                      background: "red",
-                      color: "black",
-                      display: "flex",
-                      alignItems: "center",
-                      height: "2em"
-                    }}
-                  >Reply</Button>
+                  {user && review.name === user.name &&
 
-                  <Button onClick={(e) => handleDeleteReview(e, review)}
-                    style={{
-                      background: "red",
-                      color: "black",
-                      display: "flex",
-                      alignItems: "center",
-                      height: "2em"
-                    }}
-                  >
-                    Delete
-                  </Button>
+                    <EditIcon onClick={() => handleShowEditForm(review.review)}
+                      sx={{ fontSize: 16 }}
+                    />}
+
+
+                  <ReplyIcon onClick={() => {
+                    handleshowreply(!showreply);
+                  }}
+                    sx={{ fontSize: 16 }}
+                  />
+
+                  {user && review.name === user.name &&
+                    <DeleteIcon onClick={(e) => handleDeleteReview(e, review)}
+                      sx={{ fontSize: 16 }}
+                    />
+                  }
+
                 </div>
+
+                {showreply && (
+                  <div className="replysection">
+                    {review.replies && (
+                      <div className="replies">
+                        {review.replies.map((reply) => (
+                          <div className="reply" key={reply._id}>
+                            <img
+                              className="rpic"
+                              src={reply.userimage}
+                              alt="img"
+                            ></img>
+                            <div className="userrepl">
+                              <h3>{reply.user}</h3>
+                              <p> {reply.text}</p>
+
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <form onSubmit={(e) => handleReplyReview(e, review)} className="handle">
+                      <div className="replyform">
+                        <TextField
+                          className="replyhere"
+                          placeholder="Add your reply"
+                          value={replyText}
+                          onChange={(e) => setReplyText(e.target.value)}
+                          style={{
+                            height: "4vmax",
+                            width: "30vmin",
+                            marginRight: "63em"
+                          }}
+                        />
+                        <Button type="submit"
+                          style={{
+                            background: "red",
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                            height: "2em"
+                          }}>Submit</Button>
+                      </div>
+                    </form>
+
+                  </div>
+                )}
+
               </div>
             </div>
           );
