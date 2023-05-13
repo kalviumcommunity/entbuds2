@@ -10,6 +10,7 @@ import DocumentaryList from './components/Lists/DocumentaryList'
 import TopratedList from './components/Lists/TopratedList';
 import SearchPage from './components/Navbar/SearchPage';
 import FilmPage from './components/FilmPage/FilmPage';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='movies/romance' element = {<RomanceList />}></Route>
         <Route path='movies/documentary' element = {<DocumentaryList />}></Route>
       </Routes>
+      <Footer />
       </Router>
     </div>
   );
