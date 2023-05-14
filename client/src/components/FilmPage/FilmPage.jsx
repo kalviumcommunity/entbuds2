@@ -225,7 +225,7 @@ const FilmPage = () => {
               color: "black",
               display: "flex",
               alignItems: "center",
-              height: "2em"
+              height: "2.8em"
             }}
           >
             Post

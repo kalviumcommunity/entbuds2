@@ -66,7 +66,7 @@ router.put("/review/edit/:title/:_id", async (req, resp) => {
       const review = movie.reviews.find((r) => r._id.toString() === _id);
 
       if (review) {
-        review.text = text;
+        review.review = text;
         await movie.save();
 
         const updatedReview = movie.reviews.find((r) => r._id.toString() === _id);

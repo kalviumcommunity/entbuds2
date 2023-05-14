@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+}
+
+.footer{
+    background-color: rgb(62, 60, 60);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding: 2em;
+    
+}
+
+.contacts{
+    text-align: left;
+    margin-left: 2em;
+}
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;
+}
