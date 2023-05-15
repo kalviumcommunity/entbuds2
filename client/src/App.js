@@ -13,6 +13,8 @@ import FilmPage from './components/FilmPage/FilmPage';
 import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 import ScaleLoader from "react-spinners/ScaleLoader";
+import PrivacyPolicy from './components/Footer/Privacy Policy/PrivacyPolicy';
+import Terms from './components/Footer/T&C/T&C';
 
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
         <Route path='movies/comedy' element = {<ComedyList />}></Route>
         <Route path='movies/romance' element = {<RomanceList />}></Route>
         <Route path='movies/documentary' element = {<DocumentaryList />}></Route>
+        <Route path='privacy' element = {<PrivacyPolicy />}></Route>
+        <Route path='T&C' element = {<Terms />}></Route>
       </Routes>
       <Footer />
       </Router>

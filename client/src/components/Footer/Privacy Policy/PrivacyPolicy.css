@@ -1,0 +1,16 @@
+.policy{
+    text-align: left;
+    margin-left: 7vmin;
+}
+
+.policy h1{
+    color: red;
+}
+
+.info{
+    color: red;
+}
+
+.policy p {
+    color: white;
+}

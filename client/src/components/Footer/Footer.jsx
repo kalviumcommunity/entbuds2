@@ -3,6 +3,7 @@ import './Footer.css';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     
@@ -30,6 +31,11 @@ const Footer = () => {
                         </a>
                     </div>
                 </div>
+            </div>
+            <div>
+                <h3>More</h3>
+                <Link to="privacy" style={{color: "white", textDecoration: "none"}}><p>Privacy Policy</p></Link>
+                <Link to="T&C" style={{color: "white", textDecoration: "none"}}><p>Terms and Conditions</p></Link>
             </div>
       <div>
         <h3>
