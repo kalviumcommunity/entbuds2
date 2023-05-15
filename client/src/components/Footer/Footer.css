@@ -7,7 +7,9 @@
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     padding: 2em;
-    
+    margin-top: 2vw;
+    display: flex;
+    justify-content: space-around;
 }
 
 .contacts{

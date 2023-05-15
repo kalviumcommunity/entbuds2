@@ -5,6 +5,8 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
+    
+
     return (
         <div className='footer'>
             <div className='contacts'>
@@ -29,7 +31,11 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-
+      <div>
+        <h3>
+            Donate for this website
+        </h3>
+      </div>
         </div>
     )
 }
