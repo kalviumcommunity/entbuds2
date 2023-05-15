@@ -11,11 +11,33 @@ import TopratedList from './components/Lists/TopratedList';
 import SearchPage from './components/Navbar/SearchPage';
 import FilmPage from './components/FilmPage/FilmPage';
 import Footer from './components/Footer/Footer';
+import { useEffect, useState } from 'react';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 
 function App() {
+
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)
+    },4000);
+  }, [])
+
   return (
     <div className="App">
+      {
+        loader ?
+        <ScaleLoader 
+        size={30}
+        color='red'
+        style={{
+          marginTop: '7em'
+        }}
+        />
+        :
+      
       <Router>
       <Navbar />
       <Routes>
@@ -31,6 +53,7 @@ function App() {
       </Routes>
       <Footer />
       </Router>
+}
     </div>
   );
 }
