@@ -26,6 +26,32 @@ const FilmPage = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const addToLiked = async () => {
+    try {
+      const liker = await fetch(`${process.env.REACT_APP_DATABASE}/api/add`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: user.email,
+          data: allabout
+        })
+      });
+  
+      if (!liker.ok) {
+        throw new Error(`HTTP error! status: ${liker.status}`);
+      }
+  
+      const likerData = await liker.json();
+      console.log(likerData);
+  
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  
+
   const handleClick = async () => {
     if (review !== "") {
       await fetch(
@@ -148,6 +174,7 @@ const FilmPage = () => {
             <p>{allabout ? allabout.overview : "Overview here"}</p>
           </div>
           <div className="uselinks">
+            <Button onClick={addToLiked}>Like</Button>
             <h1>Useful Links</h1>
             {allabout && allabout.homepage && (
               <a
