@@ -3,6 +3,7 @@ import axios from "../../api/Axios";
 import wants from "../../api/Wanted";
 import "./TopRatedHome.css";
 import { Link } from "react-router-dom";
+import Cards from '../Slide/Card';
 
 const RomanceHomeList = () => {
   const [romantichomemovie, setRomanticHomeMovie] = useState([]);
@@ -29,18 +30,7 @@ const RomanceHomeList = () => {
           <div className="mainthing">
             {romantichomemovie.map((romantichomemovie, index) => {
               return (
-                <Link
-                to={`/movie/${romantichomemovie.id}`}>
-                <div className="postcard">
-                <img
-                  key={index} className="Posterimage"
-                  src={`https://image.tmdb.org/t/p/original${
-                    romantichomemovie && romantichomemovie.poster_path
-                  }`}
-                  alt="movies"
-                />
-                </div>
-                </Link>
+                <Cards key={index} movie={romantichomemovie} />
               );
             })}
           </div>
