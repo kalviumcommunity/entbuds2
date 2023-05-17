@@ -10,12 +10,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, EffectCoverflow, Pagination, Navigation } from "swiper";
 import { Link } from "react-router-dom";
-import TopHomeList from "../Homelists/TopRatedHome";
-import ActionHomeList from "../Homelists/ActionHome";
-import ComedyHomeList from "../Homelists/ComedyHome";
-import DocHomeList from "../Homelists/DocumentaryHome";
-import HorrorHomeList from "../Homelists/HorrorHome";
-import RomanceHomeList from "../Homelists/RomanceHome";
+import TopHomeList from "../Homelists/Movies/TopRatedHome";
+import ActionHomeList from "../Homelists/Movies/ActionHome";
+import ComedyHomeList from "../Homelists/Movies/ComedyHome";
+import DocHomeList from "../Homelists/Movies/DocumentaryHome";
+import HorrorHomeList from "../Homelists/Movies/HorrorHome";
+import RomanceHomeList from "../Homelists/Movies/RomanceHome";
 
 
 const Home = () => {
