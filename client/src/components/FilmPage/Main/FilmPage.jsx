@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./FilmPage.css";
-import axios from "../../api/Axios";
-import wants from "../../api/Wanted";
+import axios from "../../../api/Axios";
+import wants from "../../../api/Wanted";
 import { useParams } from "react-router-dom";
-import YTReviews from "./YTReviews";
-import UserReviews from "./UserReviews";
+import YTReviews from "../YTReviews/YTReviews";
+import UserReviews from "../UserReviews/UserReviews";
 import { Button, TextField } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 

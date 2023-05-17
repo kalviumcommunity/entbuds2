@@ -5,6 +5,7 @@ import wants from '../../api/Wanted';
 import Cards from '../Slide/Card';
 import ActionList from '../Lists/ActionList';
 
+
 const SearchPage = () => { 
 
     const [query, setQuery] = useState(''); 
