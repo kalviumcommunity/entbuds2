@@ -125,6 +125,7 @@ const UserReviews = (props) => {
   };
 
   const handleReplyReview = async (e, review) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DATABASE}/api/review/reply/${name}/${review._id}`,
@@ -149,6 +150,7 @@ const UserReviews = (props) => {
           }
         });
         setCustReviews(updatedReviews);
+        setReplyText("")
         console.log("Reply Added");
       } else {
         console.log("Reply Failed");

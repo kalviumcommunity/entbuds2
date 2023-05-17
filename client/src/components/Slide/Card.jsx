@@ -37,8 +37,9 @@ const Cards = ({ movie, onRemove }) => {
     setIsLoading(false);
   }, [movie, user.email]);
 
-  const addToLiked = async () => {
+  const addToLiked = async (event) => {
     try {
+      event.preventDefault();
       setLiked(true);
       const liker = await fetch(`${process.env.REACT_APP_DATABASE}/api/add`, {
         method: 'POST',
