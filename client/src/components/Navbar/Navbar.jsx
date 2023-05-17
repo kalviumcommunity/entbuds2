@@ -67,6 +67,7 @@ const Navbar = () => {
                                 </div>
                             )}
             <Link to="movies/search" style={{textDecoration: "none", color: "white"}}><span>Search</span></Link>
+            <Link to="userList" style={{textDecoration: "none", color: "white"}}><span>My List</span></Link>
             </div>
             </div>
             {isAuthenticated ? (

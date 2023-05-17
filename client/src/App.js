@@ -9,12 +9,13 @@ import RomanceList from './components/Lists/RomanceList';
 import DocumentaryList from './components/Lists/DocumentaryList'
 import TopratedList from './components/Lists/TopratedList';
 import SearchPage from './components/Navbar/SearchPage';
-import FilmPage from './components/FilmPage/FilmPage';
+import FilmPage from './components/FilmPage/Main/FilmPage'
 import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 import ScaleLoader from "react-spinners/ScaleLoader";
 import PrivacyPolicy from './components/Footer/Privacy Policy/PrivacyPolicy';
 import Terms from './components/Footer/T&C/T&C';
+import ListPage from './components/FilmPage/UserPage/ListPage';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route path='movies/comedy' element = {<ComedyList />}></Route>
         <Route path='movies/romance' element = {<RomanceList />}></Route>
         <Route path='movies/documentary' element = {<DocumentaryList />}></Route>
+        <Route path='userList' element = {<ListPage />}></Route>
         <Route path='privacy' element = {<PrivacyPolicy />}></Route>
         <Route path='T&C' element = {<Terms />}></Route>
       </Routes>
