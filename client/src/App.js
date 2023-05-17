@@ -16,6 +16,8 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import PrivacyPolicy from './components/Footer/Privacy Policy/PrivacyPolicy';
 import Terms from './components/Footer/T&C/T&C';
 import ListPage from './components/FilmPage/UserPage/ListPage';
+import TVHome from './components/TVHome/TVHome';
+import TVpage from './components/FilmPage/TVPage/TVpage';
 
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
       <Routes>
         <Route index element = {<Home />}></Route>
         <Route path='movie/:id' element = {<FilmPage />}></Route>
+        <Route path='series/:id' element = {<TVpage />}></Route>
         <Route path='movies/search' element = {<SearchPage />}></Route>
         <Route path='movies/toprated' element = {<TopratedList />}></Route>
         <Route path='movies/horror' element = {<HorrorList />}></Route>
@@ -54,6 +57,7 @@ function App() {
         <Route path='movies/romance' element = {<RomanceList />}></Route>
         <Route path='movies/documentary' element = {<DocumentaryList />}></Route>
         <Route path='userList' element = {<ListPage />}></Route>
+        <Route path='tvhome' element = {<TVHome />}></Route>
         <Route path='privacy' element = {<PrivacyPolicy />}></Route>
         <Route path='T&C' element = {<Terms />}></Route>
       </Routes>

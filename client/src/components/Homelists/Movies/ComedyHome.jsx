@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "../../api/Axios";
-import wants from "../../api/Wanted";
+import axios from "../../../api/Axios";
+import wants from "../../../api/Wanted";
 import "./TopRatedHome.css";
 import { Link } from "react-router-dom";
-import Cards from '../Slide/Card';
+import Cards from '../../Slide/Card';
 
 const ComedyHomeList = () => {
   const [comedyhomemovie, setComedyHomeMovie] = useState([]);
