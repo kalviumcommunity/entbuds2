@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Cards = ({ movie, onRemove }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [liked , setLiked] = useState(false)
-  const { user } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     setTimeout(() => {
@@ -17,7 +17,7 @@ const Cards = ({ movie, onRemove }) => {
 
   useEffect(() => {
     setLiked(false); // Reset isLiked state when component re-renders
-    if (movie) {
+    if (movie && isAuthenticated) {
       // Check if the movie is in the liked movie list
       fetch(`${process.env.REACT_APP_DATABASE}/api/likedmovie/${user.email}`)
         .then((response) => response.json())
@@ -35,7 +35,7 @@ const Cards = ({ movie, onRemove }) => {
         });
     }
     setIsLoading(false);
-  }, [movie, user.email]);
+  }, [movie, user, isAuthenticated]);
 
   const addToLiked = async (event) => {
     try {

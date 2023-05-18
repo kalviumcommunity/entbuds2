@@ -35,30 +35,6 @@ router.get("/likedmovie/:email", async (req, resp) => {
     }
 })
 
-// router.put("/delete", async (res, resp) => {
-//     try{
-//         const { email, filmId } = req.body;
-//         const adder = await list.findOne({email});
-//         if (adder) {
-//             const { likedFilms } = adder;
-//             const filmIndex = likedFilms.findIndex(({id}) => id === filmId);
-//             if(!filmIndex)
-//                 res.statusCode(400).send({ msg: "Film not found"});
-//                 likedFilms.splice(filmIndex, 1);
-//                 await list.findByIdAndUpdate(
-//                     adder._id,
-//                     {
-//                         likedFilms
-//                     },
-//                     {new: true}
-//                 )
-//         }
-//         return resp.json({msg: "Film deleted", movies: adder.likedFilms});
-//     } catch(e) {
-//         console.log(e);
-//         return resp.json({msg: "Error"})
-//     }
-// })
 
 router.put("/delete", async (req, resp) => {
     try {
