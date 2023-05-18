@@ -9,6 +9,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, EffectCoverflow, Pagination, Navigation } from "swiper";
 import { Link } from "react-router-dom";
+import DramaTVHome from '../Homelists/TVShows/DramaTVHome';
+import ComedyTVHome from '../Homelists/TVShows/ComedyTVHome';
+import CrimeTVHome from '../Homelists/TVShows/CrimeTVHome';
+import DocumentaryTVHome from '../Homelists/TVShows/DocumTVHome';
+import RomanticTVHome from '../Homelists/TVShows/RomanceTVHome';
 
 const TVHome = () => {
     const [popularTV, setTV] = useState([]);
@@ -92,6 +97,13 @@ const TVHome = () => {
                     </div>
                 </Swiper>
             )}
+            <div className='alltvcontainer'>
+                <DramaTVHome />
+                <ComedyTVHome />
+                <CrimeTVHome />
+                <DocumentaryTVHome />
+                <RomanticTVHome />
+            </div>
 
         </div>
     )

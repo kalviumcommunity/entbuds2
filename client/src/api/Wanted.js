@@ -9,7 +9,12 @@ const wants = {
     getsearch: `/search/movie?api_key=${process.env.REACT_APP_API_KEY}`,
     getdetails: `/movie/`,
     gettvdetails: `/tv/`,
-    getpopulartv: `/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc`
+    getpopulartv: `/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc`,
+    getdramatv: `/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=18`,
+    getcomedytv: `discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=35`,
+    getcrimetv: `discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=80`,
+    getdocumtv: `discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=99`,
+    getromantictv: `discover/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10749`,
 }
 
 export default wants;
