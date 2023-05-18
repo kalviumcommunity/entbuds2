@@ -18,6 +18,7 @@ import Terms from './components/Footer/T&C/T&C';
 import ListPage from './components/FilmPage/UserPage/ListPage';
 import TVHome from './components/TVHome/TVHome';
 import TVpage from './components/FilmPage/TVPage/TVpage';
+import ScifiList from './components/Lists/ScifiList';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path='movies/comedy' element = {<ComedyList />}></Route>
         <Route path='movies/romance' element = {<RomanceList />}></Route>
         <Route path='movies/documentary' element = {<DocumentaryList />}></Route>
+        <Route path='movies/scifi' element = {<ScifiList />}></Route>
         <Route path='userList' element = {<ListPage />}></Route>
         <Route path='tvhome' element = {<TVHome />}></Route>
         <Route path='privacy' element = {<PrivacyPolicy />}></Route>

@@ -14,6 +14,8 @@ import ComedyTVHome from '../Homelists/TVShows/ComedyTVHome';
 import CrimeTVHome from '../Homelists/TVShows/CrimeTVHome';
 import DocumentaryTVHome from '../Homelists/TVShows/DocumTVHome';
 import RomanticTVHome from '../Homelists/TVShows/RomanceTVHome';
+import MysteryTVHome from '../Homelists/TVShows/MysteryTVHome';
+import AnimTVHome from '../Homelists/TVShows/AnimTVHome';
 
 const TVHome = () => {
     const [popularTV, setTV] = useState([]);
@@ -103,6 +105,8 @@ const TVHome = () => {
                 <CrimeTVHome />
                 <DocumentaryTVHome />
                 <RomanticTVHome />
+                <MysteryTVHome />
+                <AnimTVHome />
             </div>
 
         </div>

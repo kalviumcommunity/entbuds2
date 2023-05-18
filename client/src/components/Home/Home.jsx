@@ -16,6 +16,7 @@ import ComedyHomeList from "../Homelists/Movies/ComedyHome";
 import DocHomeList from "../Homelists/Movies/DocumentaryHome";
 import HorrorHomeList from "../Homelists/Movies/HorrorHome";
 import RomanceHomeList from "../Homelists/Movies/RomanceHome";
+import SciFiHomeList from "../Homelists/Movies/SciFiHome";
 
 
 const Home = () => {
@@ -109,6 +110,7 @@ const Home = () => {
         <DocHomeList />
         <HorrorHomeList />
         <RomanceHomeList /> 
+        <SciFiHomeList />
       </div>
     </div>
   );
