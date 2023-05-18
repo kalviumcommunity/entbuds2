@@ -64,6 +64,7 @@ const Navbar = () => {
                                     <Link to="movies/comedy" style={{textDecoration: "none"}}><span>Comedy</span></Link>
                                     <Link to="movies/romance" style={{textDecoration: "none"}}><span>Romance</span></Link>
                                     <Link to="movies/documentary" style={{textDecoration: "none"}}><span>Documentaries</span></Link>
+                                    <Link to="movies/scifi" style={{textDecoration: "none"}}><span>Sci-Fi</span></Link>
                                 </div>
                             )}
             <Link to="movies/search" style={{textDecoration: "none", color: "white"}}><span>Search</span></Link>
