@@ -48,36 +48,58 @@ const Navbar = () => {
 
 
   return (
-    <div style={{height:"12vh", marginBottom:"2vh", position:"fixed", zIndex:"1010"}}>
-        <nav className={`navbar ${nottransparent && "navbarblack"}`} style={{display:"flex", width:"100%", justifyContent:"center", alignItems:"center"}}>
-            <div className='left' style={{display:"flex", flexDirection:"row", width:"90%" }}>
-                <Link style={{width:"15%"}} to="/"><img src={cinebuds} style={{width:"100%"}} className='logo' alt='logo'></img></Link>
-                <div className='spans' style={{width:"85%", display:"flex", justifyContent:"space-evenly", alignItems:"center"}}>
-                    <Link to="movies/toprated" style={{textDecoration: "none", color:"white"}}><span id='top'>Top Rated</span></Link>
-                    <span onClick={handleDropdown} style={{color:"white"}}>Categories</span>
-                    {showDropdown && (
-                        <div className="dropdown-content" ref={dropdownRef} style={{position:"absolute", top:"11.5vh", display:"flex", width:"60vw", justifyContent:"space-evenly"}}>
-                            <Link to="movies/horror" style={{textDecoration: "none", color:"red"}}><span>Horror</span></Link>
-                            <Link to="movies/action" style={{textDecoration: "none", color:"red"}}><span>Action</span></Link>
-                            <Link to="movies/comedy" style={{textDecoration: "none", color:"red"}}><span>Comedy</span></Link>
-                            <Link to="movies/romance" style={{textDecoration: "none", color:"red"}}><span>Romance</span></Link>
-                            <Link to="movies/documentary" style={{textDecoration: "none", color:"red"}}><span>Documentaries</span></Link>
-                            <Link to="movies/scifi" style={{textDecoration: "none", color:"red"}}><span>Sci-Fi</span></Link>
-                        </div>
-                    )}
-                    <Link to="userList" style={{textDecoration: "none", color: "white"}}><span>My List</span></Link>
-                    <Link to="tvhome" style={{textDecoration: "none", color: "white"}}><span>TV Shows</span></Link> 
-                </div>
+    <div>
+        <nav className={`navbar ${nottransparent && "navbarblack"}`}>
+            <div className='container'>
+                <div className='left'>
+            <Link to="/"><img src={cinebuds} className='logo' alt='logo'></img></Link>
+            <div className='spans'>
+            
+            <Link to="movies/toprated" style={{textDecoration: "none"}}><span id='top'>Top Rated</span></Link>
+            <span onClick={handleDropdown}>Categories</span>
+            {showDropdown && (
+                                <div className="dropdown-content" ref={dropdownRef}>
+                                    <Link to="movies/horror" style={{textDecoration: "none"}}><span>Horror</span></Link>
+                                    <Link to="movies/action" style={{textDecoration: "none"}}><span>Action</span></Link>
+                                    <Link to="movies/comedy" style={{textDecoration: "none"}}><span>Comedy</span></Link>
+                                    <Link to="movies/romance" style={{textDecoration: "none"}}><span>Romance</span></Link>
+                                    <Link to="movies/documentary" style={{textDecoration: "none"}}><span>Documentaries</span></Link>
+                                    <Link to="movies/scifi" style={{textDecoration: "none"}}><span>Sci-Fi</span></Link>
+                                </div>
+                            )}
+            <Link to="movies/search" style={{textDecoration: "none", color: "white"}}><span>Search</span></Link>
+            <Link to="userList" style={{textDecoration: "none", color: "white"}}><span>My List</span></Link>
+            <Link to="tvhome" style={{textDecoration: "none", color: "white"}}><span>TV Shows</span></Link>
+            </div>
             </div>
             {isAuthenticated ? (
                 <div className='right'>
-                    <Button variant='contained' startIcon={<PersonIcon />} style={{background: "red"}}onClick={logout}>Logout</Button>
+                    <Button
+                    variant='contained'
+                    startIcon={<PersonIcon />}
+                    style={{
+                        background: "red",
+                        marginTop: "0.5em",
+                    }}
+                    onClick={logout}>
+                        Logout
+                    </Button>
                 </div>
             ) : (
-            <div className='right'>
-                <Button variant='contained' startIcon={<PersonIcon />} style={{background: "red"}} onClick={loginWithRedirect}>Login</Button>
-            </div>   
+             <div className='right'>
+                <Button
+                variant='contained'
+                startIcon={<PersonIcon />}
+                style={{
+                    background: "red",
+                    marginTop: "0.5em",
+                }}
+                onClick={loginWithRedirect}>
+                    Login
+                </Button>
+             </div>   
             )}
+            </div>
         </nav>
       
     </div>

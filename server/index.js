@@ -17,7 +17,7 @@ app.use("/api", listRouter)
 
 
 mongoose
-  .connect(DB, {
+  .connect(MONGO, {
     family: 4,
   })
   .then(() => {

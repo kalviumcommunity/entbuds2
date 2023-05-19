@@ -2,7 +2,7 @@ import React , {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import './YTReviews.css';
+import './YTReviews.css';
 
 
 const YTReviews = ({filmId, title}) => {
@@ -15,8 +15,8 @@ useEffect(() => {
 
 
   return (
-    <div className='ytrevs' style={{height:"40vh"}}>
-        <h1 id='ythead' style={{color:"white", fontSize:"xxx-large", padding:"5% 0% 2% 0%"}}>Youtube Reviews</h1>
+    <div className='ytrevs' >
+        <h1 id='ythead'>Youtube Reviews</h1>
 
         <Carousel 
         showThumbs={false}

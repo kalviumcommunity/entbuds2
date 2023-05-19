@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./UserReviews.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, TextField } from "@mui/material";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ReplyIcon from "@mui/icons-material/Reply";
-import EditIcon from "@mui/icons-material/Edit";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ReplyIcon from '@mui/icons-material/Reply';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const UserReviews = (props) => {
   const { user } = useAuth0();
@@ -71,6 +71,7 @@ const UserReviews = (props) => {
     }
   };
 
+
   const handleDeleteReview = async (e, review) => {
     try {
       const response = await fetch(
@@ -124,6 +125,7 @@ const UserReviews = (props) => {
   };
 
   const handleReplyReview = async (e, review) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DATABASE}/api/review/reply/${name}/${review._id}`,
@@ -148,6 +150,7 @@ const UserReviews = (props) => {
           }
         });
         setCustReviews(updatedReviews);
+        setReplyText("")
         console.log("Reply Added");
       } else {
         console.log("Reply Failed");
@@ -163,45 +166,79 @@ const UserReviews = (props) => {
         CustReviews.map((review) => {
           return (
             <div className="letsrevw">
-              <div style={{display:"flex", padding:"2%", width:"96%"}}>
-                <img src={ review.image ?review.image :<AccountCircleIcon />} className="ppic" style={{borderRadius:"100px", width:"6%", height:"6%", border:"2px solid red", padding:"2px"}} alt="prof_pic" />
-                <div style={{width:"60%"}}>
-                  <h2 style={{margin:"0%", padding:"0% 2%", textAlign:"left"}}>{review.name}</h2>
-                  <p key={review._id} style={{color:"red", margin:"0%", textAlign:"left", padding:"2%"}}>{review.review}</p>
-                </div>
-                <div className="btns" style={{ padding:"2%", width:"30%", display:"flex", flexDirection:"row", justifyContent:"space-evenly", alignItems:"start"}}>
-                  <div className="likes">
-                    <FavoriteBorderIcon onClick={(e) => handleLikeReview(e, review)} sx={{ fontSize: 16 }} />
-                    <b className="lc" style={{fontSize:"medium"}}>{review.likes.length}</b>
-                  </div>
-                  {user && review.name === user.name && (
-                    <EditIcon onClick={() => handleShowEditForm(review.review)} sx={{ fontSize: 16 }} />
-                  )}
-                  <ReplyIcon onClick={() => { handleshowreply(!showreply); }} sx={{ fontSize: 16 }} />
-                  {user && review.name === user.name && (
-                    <DeleteIcon onClick={(e) => handleDeleteReview(e, review)} sx={{ fontSize: 16 }} />
-                  )}
-                </div>
-              </div>
+              <img src={review.image} className="ppic" alt="prof_pic" />
+              <div className="textrev">
+                <div className="mainrev">
+                  <h3>{review.name}</h3>
+                  <p key={review._id}>
+                    <p style={{ marginRight: "5.6em" }}>{review.review}</p>
+                  </p>
+
+
                   {showEditForm && (
                     <form onSubmit={(e) => handleEditReview(e, review)}>
-                      <input type="text" placeholder="Edit Review" value={editText} onChange={(e) => setEditText(e.target.value)} />
+                      <input
+                        type="text"
+                        placeholder="Edit Review"
+                        value={editText}
+                        onChange={(e) => setEditText(e.target.value)}
+                      />
                       <button type="submit">Save</button>
                     </form>
                   )}
 
-              <div className="textrev">
 
-                {/* {showreply && (
+                </div>
+
+                <div className="btns">
+                  <div className="likes">
+
+
+
+                    <FavoriteBorderIcon onClick={(e) => handleLikeReview(e, review)}
+                      sx={{ fontSize: 16 }}
+                    />
+                    <b className="lc">{review.likes.length}</b>
+
+
+                  </div>
+
+                  {user && review.name === user.name &&
+
+                    <EditIcon onClick={() => handleShowEditForm(review.review)}
+                      sx={{ fontSize: 16 }}
+                    />}
+
+
+                  <ReplyIcon onClick={() => {
+                    handleshowreply(!showreply);
+                  }}
+                    sx={{ fontSize: 16 }}
+                  />
+
+                  {user && review.name === user.name &&
+                    <DeleteIcon onClick={(e) => handleDeleteReview(e, review)}
+                      sx={{ fontSize: 16 }}
+                    />
+                  }
+
+                </div>
+
+                {showreply && (
                   <div className="replysection">
                     {review.replies && (
                       <div className="replies">
                         {review.replies.map((reply) => (
                           <div className="reply" key={reply._id}>
-                            <img className="rpic" src={reply.userimage} alt="img" ></img>
+                            <img
+                              className="rpic"
+                              src={reply.userimage}
+                              alt="img"
+                            ></img>
                             <div className="userrepl">
                               <h3>{reply.user}</h3>
                               <p> {reply.text}</p>
+
                             </div>
                           </div>
                         ))}
@@ -210,12 +247,31 @@ const UserReviews = (props) => {
 
                     <form onSubmit={(e) => handleReplyReview(e, review)} className="handle">
                       <div className="replyform">
-                        <TextField className="replyhere" placeholder="Add your reply" value={replyText} onChange={(e) => setReplyText(e.target.value)} style={{ height: "4vmax", width: "30vmin", marginRight: "63em"}} />
-                        <Button type="submit" style={{ background: "red", color: "black", display: "flex", alignItems: "center", height: "2em"}}>Submit</Button>
+                        <TextField
+                          className="replyhere"
+                          placeholder="Add your reply"
+                          value={replyText}
+                          onChange={(e) => setReplyText(e.target.value)}
+                          style={{
+                            height: "4vmax",
+                            width: "30vmin",
+                            marginRight: "63em"
+                          }}
+                        />
+                        <Button type="submit"
+                          style={{
+                            background: "red",
+                            color: "black",
+                            display: "flex",
+                            alignItems: "center",
+                            height: "2em"
+                          }}>Submit</Button>
                       </div>
                     </form>
+
                   </div>
-                )} */}
+                )}
+
               </div>
             </div>
           );
