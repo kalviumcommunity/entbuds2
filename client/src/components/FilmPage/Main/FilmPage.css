@@ -1,88 +1,177 @@
-@media screen and (max-width: 650px) {
-  .head-data{
-    flex-direction: column !important;
-  }
-  .head-data-content{
-    width: 100% !important;
-  }
-  .poster-name-rating-text-styling{
-    font-size: x-small !important;
-    padding: 2% !important;
-  }
-  .date-text-styling{
-    font-size: x-small !important;
-    padding: 2% !important;
-  }
-  .decription-h1{
-    text-align: center !important;
-  }
-  .decription-p{
-    width: 96% !important;
-    padding: 2% !important;
-  }
-  .uselinks{
-    padding: 2% !important;
-    width: 96% !important;
-  }
-  .uselinks-h1{
-    font-size: large !important;
-    width: 50% !important;
-  }
-  .uselinks-div{
-    padding: 0% !important;
-  }
-  .prodpart{
-    width: 96% !important;
-    padding: 2% !important;
-  }
-  .productionheading{
-    width: 50% !important;
-    font-size: large !important;
-  }
-  .review{
-    width: 50%;
-  }
-  .review-save{
-    width: 30%;
-    margin-left: -34.5%;
-    margin-top: .5%;
-    margin-bottom: .5%;
-  }
-}
-.review-container{
-  margin-bottom: 2%;
-  width: 80%;
+.chosen {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+
+.introduction {
+  width: 100%;
+}
+
+.bg {
+  height: 80vh;
+  width: 100%;
+}
+
+.thumbbox {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.thumbnail img {
+  height: 50vh;
+  z-index: 1;
+  position: relative;
+  bottom: 10vh;
+}
+
+.text-styling {
+  color: white;
+}
+
+.poster-name-rating {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.date {
+  text-align: left;
+  padding-left: 10px;
+  font-size: x-small;
+  font-style: italic;
+  color: red;
+}
+
+.description {
+    text-align: left;
+    padding-left: 10px;
+    color: white;
+    margin-top: 5%;
+    width: 50vw;
+}
+
+.description h1 {
+    color: red;
+}
+
+.uselinks {
+  position: relative;
+  bottom: -12em;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.uselinks h1{
+  color: rgb(255, 9, 9);
+  margin-left: -7em;
+  margin-top: -0.4em;
+}
+
+.homebutton{
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  padding: 40% 80%;
+  width: 4em;
+  border-radius: 14%;
+  border: 2px solid white;
+  border-style: dashed;
+}
+
+.imdbbutton{
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  padding: 40% 80%;
+  width: 4em;
+  border-radius: 14%;
+  border: 2px solid white;
+  border-style: dashed;
+}
+
+.prodpart{
+  margin-top: 14em;
+  color: red;
+}
+
+.productionheading{
+  margin-bottom: 1em;
+}
+
+.companyimage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ytrevs{
+  width: 100%;
+}
+
+.productions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 17em;
+  background-color: white;
+}
+
+.companyname {
+  width: 200px;
+  margin: 2rem;
 }
 
 .review{
-  width: 40%;
-  display: inline-block;
-  padding: 14px 130px 14px 15px;
-  border: 2px solid red;
-  border-radius: 30px;
-  background-color: white;
-  color: black;
+  width: 65vw;
+  height: 7vh;
+  border-radius: 0.5em;
+  font-size: 1rem;
+  background-color: rgb(51, 49, 49);
 }
 
-.review-save{
-  border: 2px solid black;
-  position:relative;
-  padding: 10px 10px;
-  border-radius: 30px;
-  background-color: red;
-  color: black;
-  transition: .2s;
-  font-size: large;
-  margin-left: -20.5%;
-  width: 20%;
-  font-size: small;
-  margin-top: .5%;
-  margin-bottom: .5%;
+.review-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 6.3em;
+  padding: 2em;
 }
-.review-save:hover{
-  background-color: black;
-  border: 2px solid red;
-  color: white;
-  cursor: pointer;
+
+.userrevs{
+  background-color: rgb(74, 72, 72);
+  padding: 1em;
+  border-radius: 2em;
+}
+
+.review::placeholder{
+  color: #fff;
+}
+
+.review-section h2{
+  color: red;
+  text-align: left;
+  margin-left: -4.7em;
+
+}
+@media screen and(max-width:662px) {
+  .chosen{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .introduction{
+    width: 100%;
+  }
+
+  .ytrevs{
+    display: none;
+  }
+  .thumbbox{
+    display: grid;
+    grid-template-columns: auto;
+  }
 }

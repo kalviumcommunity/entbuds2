@@ -4,7 +4,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const reviewRouter = require("./routes/extreview");
-const listRouter  = require("./routes/list")
+const listRouter  = require("./routes/list");
+const moviesRouter = require('./routes/moviebook');
 const PORT = process.env.PORT;
 const DB = process.env.DB;
 const MONGO = process.env.MONGODB_TEST;
@@ -13,11 +14,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api", reviewRouter);
-app.use("/api", listRouter)
+app.use("/api", listRouter);
+app.use('/api', moviesRouter);
 
 
 mongoose
-  .connect(DB, {
+  .connect(MONGO, {
     family: 4,
   })
   .then(() => {
@@ -28,3 +30,7 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+ 
+  
+  
