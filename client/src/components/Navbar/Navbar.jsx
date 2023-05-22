@@ -68,7 +68,7 @@ const Navbar = () => {
                                 </div>
                             )}
             <Link to="movies/search" style={{textDecoration: "none", color: "white"}}><span>Search</span></Link>
-            <Link to="userList" style={{textDecoration: "none", color: "white"}}><span>My List</span></Link>
+            {isAuthenticated && (<Link to="userList" style={{textDecoration: "none", color: "white"}}><span>My List</span></Link>)}
             <Link to="tvhome" style={{textDecoration: "none", color: "white"}}><span>TV Shows</span></Link>
             <Link to="booking" style={{textDecoration: "none", color: "white"}}><span>Book</span></Link>
             </div>
