@@ -127,6 +127,7 @@ const Cards = ({ movie, onRemove }) => {
               <div className="card-desc">
                 {movie ? movie.overview.slice(0, 118) + "..." : ""}
               </div>
+              {isAuthenticated && (
               <div>
                 {!liked ? (
                   <Button onClick={addToLiked}>Like</Button>
@@ -135,6 +136,7 @@ const Cards = ({ movie, onRemove }) => {
                 )}
             
             </div>
+              )}
             </div>
             
           </div>
