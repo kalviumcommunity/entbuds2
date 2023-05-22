@@ -26,31 +26,6 @@ const FilmPage = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const addToLiked = async () => {
-    try {
-      const liker = await fetch(`${process.env.REACT_APP_DATABASE}/api/add`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: user.email,
-          data: allabout
-        })
-      });
-  
-      if (!liker.ok) {
-        throw new Error(`HTTP error! status: ${liker.status}`);
-      }
-  
-      const likerData = await liker.json();
-      console.log(likerData);
-  
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  
 
   const handleClick = async () => {
     if (review !== "") {
@@ -135,9 +110,8 @@ const FilmPage = () => {
       <div className="introduction">
         <img
           className="bg"
-          src={`https://image.tmdb.org/t/p/original${
-            allabout ? allabout.backdrop_path : ""
-          }`}
+          src={`https://image.tmdb.org/t/p/original${allabout ? allabout.backdrop_path : ""
+            }`}
           alt="bgimg"
         />
       </div>
@@ -146,9 +120,8 @@ const FilmPage = () => {
         <div className="thumbnail">
           <img
             className="poster"
-            src={`https://image.tmdb.org/t/p/original${
-              allabout ? allabout.poster_path : ""
-            }`}
+            src={`https://image.tmdb.org/t/p/original${allabout ? allabout.poster_path : ""
+              }`}
             alt="poster"
           />
         </div>
@@ -174,7 +147,7 @@ const FilmPage = () => {
             <p>{allabout ? allabout.overview : "Overview here"}</p>
           </div>
           <div className="uselinks">
-            <Button onClick={addToLiked}>Like</Button>
+
             <h1>Useful Links</h1>
             {allabout && allabout.homepage && (
               <a
@@ -235,37 +208,37 @@ const FilmPage = () => {
         <div className="review-section">
           <h2 color="red">Reviews</h2>
           <div className="review-container">
-          <TextField
-            value={review}
-            className="review"
-            label="Type your review here"
-            onChange={(e) => setReview(e.target.value)}
-          />
+            <TextField
+              value={review}
+              className="review"
+              label="Type your review here"
+              onChange={(e) => setReview(e.target.value)}
+            />
 
-          <Button
-            onClick={handleClick}
-            variant="contained"
-            size="small"
-            style={{
-              fontSize: "1.2rem",
-              background: "red",
-              color: "black",
-              display: "flex",
-              alignItems: "center",
-              height: "2.8em"
-            }}
-          >
-            Post
-          </Button>
+            <Button
+              onClick={handleClick}
+              variant="contained"
+              size="small"
+              style={{
+                fontSize: "1.2rem",
+                background: "red",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                height: "2.8em"
+              }}
+            >
+              Post
+            </Button>
           </div>
 
           {allabout && (
             <div className="userrevs">
-            <UserReviews
-              key={render}
-              render={render}
-              name={allabout ? allabout.original_title : ""}
-            />
+              <UserReviews
+                key={render}
+                render={render}
+                name={allabout ? allabout.original_title : ""}
+              />
             </div>
           )}
         </div>

@@ -4,7 +4,8 @@ import Cards from '../../Slide/Card';
 
 const ListPage = () => {
     const { user } = useAuth0();
-    const [likedmovie, setlikedmovie] = useState([])
+    const [likedmovie, setlikedmovie] = useState([]);
+
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_DATABASE}/api/likedmovie/${user.email}`)
@@ -24,6 +25,7 @@ const ListPage = () => {
     }
 
 
+
     return (
         <div>
             <br />
@@ -36,13 +38,12 @@ const ListPage = () => {
             <div className="list">
                 {likedmovie && likedmovie.length > 0 ? (
                     likedmovie.map((movie, index) => (
-                        <Cards key={index} movie={movie} onRemove={handleRemoveMovie} isLiked={likedmovie && likedmovie.some(m => m.id === movie.id)}/>
+                        <Cards key={index} movie={movie} onRemove={handleRemoveMovie} isLiked={likedmovie && likedmovie.some(m => m.id === movie.id)} />
                     ))
                 ) : (
                     <p>No movies found</p>
                 )}
             </div>
-
 
         </div>
     )

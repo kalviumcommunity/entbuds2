@@ -9,4 +9,6 @@ const listSchema = new mongoose.Schema({
     likedFilms: Array
 });
 
+
+
 module.exports = mongoose.model("list", listSchema)

@@ -13,13 +13,13 @@
 .container {
   padding: 0px 50px;
   display: flex;
-  justify-content: space-between;
   height: 84px;
 }
 
 .left {
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .right{
@@ -28,7 +28,7 @@
 }
 
 .spans {
-  margin-right: 60vw;
+  margin-right: 50vw;
 }
 
 span {

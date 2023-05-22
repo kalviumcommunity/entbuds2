@@ -19,6 +19,7 @@ import ListPage from './components/FilmPage/UserPage/ListPage';
 import TVHome from './components/TVHome/TVHome';
 import TVpage from './components/FilmPage/TVPage/TVpage';
 import ScifiList from './components/Lists/ScifiList';
+import Book from './components/Book';
 
 
 function App() {
@@ -62,8 +63,9 @@ function App() {
         <Route path='tvhome' element = {<TVHome />}></Route>
         <Route path='privacy' element = {<PrivacyPolicy />}></Route>
         <Route path='T&C' element = {<Terms />}></Route>
+        <Route path='booking' element = {<Book />}></Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       </Router>
 }
     </div>
