@@ -118,7 +118,7 @@ const Cards = ({ movie, onRemove }) => {
             <div className="card-overlay">
               
               <div className="card-title">
-                {movie ? movie.original_title : ""}
+                {movie ? (movie.original_title || movie.original_name) : ""}
               </div>
               <div className="card-runtime">
                 {movie ? movie.release_date : ""}

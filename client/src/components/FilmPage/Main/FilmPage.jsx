@@ -172,7 +172,7 @@ const FilmPage = () => {
           </div>
         </div>
       </div>
-      <div className="prodpart">
+      {/* <div className="prodpart">
         <h1 className="productionheading"> Production Companies</h1>
         <div className="productions">
           {allabout &&
@@ -193,13 +193,19 @@ const FilmPage = () => {
                 )
             )}
         </div>
-      </div>
+      </div> */}
+
       {allabout && (
         <YTReviews
           title={allabout ? allabout.original_title : ""}
           className="ytrevs"
         />
       )}
+
+      <br></br>
+      <br></br>
+
+
 
       <br></br>
       <br></br>
