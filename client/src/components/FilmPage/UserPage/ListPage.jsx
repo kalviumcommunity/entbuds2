@@ -24,6 +24,21 @@ const ListPage = () => {
         setlikedmovie((prevMovies) => prevMovies.filter((movie) => movie.id !== movieId));
     }
 
+    const handleShareList = () => {
+        fetch(`${process.env.REACT_APP_DATABASE}/api/share/${user.email}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.msg === 'Success') {
+              const { shareLink } = data;
+              window.open(shareLink, '_blank');
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      };
+      
+
 
 
     return (
@@ -44,6 +59,9 @@ const ListPage = () => {
                     <p>No movies found</p>
                 )}
             </div>
+            <button className="share-button" onClick={handleShareList}>
+      Share List
+    </button>
 
         </div>
     )

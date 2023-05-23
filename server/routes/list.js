@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const share = require("share");
 const list = require("../schemas/listSchema");
-const cheerio = require("cheerio");
-const puppeteer = require("puppeteer");
 
 router.post("/add", async (req, resp) => {
     try{
@@ -60,6 +58,44 @@ router.put("/delete", async (req, resp) => {
       return resp.status(500).json({ msg: "Error" });
     }
   });
+
+// New route to share the list through WhatsApp
+router.get("/share/:email", async (req, resp) => {
+    try {
+        const { email } = req.params;
+        const liker = await list.findOne({ email });
+        if (liker) {
+            const shareText = generateShareText(liker.likedFilms);
+            const whatsappLink = generateWhatsAppLink(shareText);
+            return resp.json({ msg: "Success", shareLink: whatsappLink });
+        } else {
+            return resp.json({ msg: "User not found" });
+        }
+    } catch (e) {
+        console.log(e);
+        return resp.status(500).json({ msg: "Error" });
+    }
+});
+
+// Helper function to generate the share text
+function generateShareText(likedFilms) {
+    // Customize the text based on your requirements
+    let shareText = "Check out my liked films:\n";
+    likedFilms.forEach((film) => {
+      const title = film.title || film.name
+        shareText += `- ${title}\n`;
+    });
+    return shareText;
+}
+
+// Helper function to generate the WhatsApp share link
+function generateWhatsAppLink(text) {
+    const encodedText = encodeURIComponent(text);
+    return `https://api.whatsapp.com/send?text=${encodedText}`;
+}
+
+module.exports = router;
+
 
   
 

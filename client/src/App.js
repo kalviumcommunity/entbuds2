@@ -65,7 +65,7 @@ function App() {
         <Route path='T&C' element = {<Terms />}></Route>
         <Route path='booking' element = {<Book />}></Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
       </Router>
 }
     </div>
