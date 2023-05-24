@@ -80,28 +80,28 @@ router.get("/share/:email", async (req, resp) => {
 
 // Helper function to generate the share text
 function generateShareText(likedFilms) {
-  // Customize the text based on your requirements
-  let shareText = "Check out my liked content:\n";
-  const films = likedFilms.filter((film) => film.title);
-  const TVShows = likedFilms.filter((film) => film.name);
-  if (films.length > 0) {
-    shareText += "\nMovies:\n";
-    films.forEach((film, index) => {
-      const title = film.title || "Untitled";
-      const number = index + 1;
-      shareText += `${number}. ${title}\n`;
-    });
-  }
-
-  if (TVShows.length > 0) {
-    shareText += "\nTV Shows:\n";
-    TVShows.forEach((film, index) => {
-      const name = film.name || "Untitled";
-      const number = index + 1;
-      shareText += `${number}. ${name}\n`;
-    });
-  }
-  return shareText;
+    // Customize the text based on your requirements
+    let shareText = "Check out my liked content:\n";
+    const films = likedFilms.filter(film => film.title);
+    const TVShows = likedFilms.filter(film => film.name);
+    if (films.length > 0) {
+      shareText += "\nMovies:\n";
+      films.forEach((film, index) => {
+        const title = film.title || "Untitled";
+        const number = index + 1;
+        shareText += `${number}. ${title}\n`;
+      });
+    }
+  
+    if (TVShows.length > 0) {
+      shareText += "\nTV Shows:\n";
+      TVShows.forEach((film, index) => {
+        const name = film.name || "Untitled";
+        const number = index + 1;
+        shareText += `${number}. ${name}\n`;
+      });
+    }
+    return shareText;
 }
 
 // Helper function to generate the WhatsApp share link
