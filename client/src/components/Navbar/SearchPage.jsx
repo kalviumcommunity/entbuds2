@@ -27,30 +27,36 @@ const SearchPage = () => {
   }, [query, page])
 
   useEffect(() => {
-    if(results.length >= 4){
+    if(results && results.length >= 4){
         setshowload(true);
     }else{
         setshowload(false);
     }
   }, [results])
 
-  const InputChange = (e) => {
-    setQuery(e.target.value);
-    setnotblank(false)
-    if(e.target.value){
-      const match = results.find((movie) => 
-      movie.title.toLowerCase() === e.target.value.toLowerCase()
-      );
-      if(match){
-        setResults([match])
-      } else{
-        setResults([])
+  const InputChange = e => {
+    const value = e.target.value;
+    setQuery(value);
+    setnotblank(false);
+
+    if (value) {
+      if (results.length > 0) {
+        const match = results.find(
+          movie =>
+          movie.title &&
+            movie.title.toLowerCase() === value.toLowerCase()
+        );
+        if (match) {
+          setResults([match]);
+        } else {
+          setResults([]);
+        }
       }
-    } else{
+    } else {
       setResults([]);
-      setnotblank(true)
+      setnotblank(true);
     }
-  }
+  };
 
   return (
     <div>
@@ -65,6 +71,9 @@ const SearchPage = () => {
       {notblank && (
         <ActionList />
       )}
+      <br />
+      <br />
+      <br />
       <div className='searchresults'>
       {results.map((result, index) => (
         <Cards key={index} movie={result} />

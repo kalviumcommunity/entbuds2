@@ -14,7 +14,7 @@ const UserReviews = (props) => {
   const { username } = props;
   const [CustReviews, setCustReviews] = useState([]);
   const [replyText, setReplyText] = useState("");
-  const [showreply, handleshowreply] = useState(true);
+  const [showreply, handleshowreply] = useState(false);
   const [editText, setEditText] = useState("");
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -166,17 +166,22 @@ const UserReviews = (props) => {
         CustReviews.map((review) => {
           return (
             <div className="letsrevw">
-              <img src={review.image} className="ppic" alt="prof_pic" />
+              
               <div className="textrev">
                 <div className="mainrev">
+                  <div className="review">
+                <img src={review.image} className="ppic" alt="prof_pic" />
+                <div>
                   <h3>{review.name}</h3>
                   <p key={review._id}>
                     <p style={{ marginRight: "5.6em" }}>{review.review}</p>
                   </p>
+                  </div>
+                  </div>
 
 
-                  {showEditForm && (
-                    <form onSubmit={(e) => handleEditReview(e, review)}>
+                  {user && review.name === user.name && showEditForm && (
+                    <form className="edit" onSubmit={(e) => handleEditReview(e, review)}>
                       <input
                         type="text"
                         placeholder="Edit Review"
@@ -254,7 +259,7 @@ const UserReviews = (props) => {
                           onChange={(e) => setReplyText(e.target.value)}
                           style={{
                             height: "4vmax",
-                            width: "30vmin",
+                            width: "14em",
                             marginRight: "63em"
                           }}
                         />
