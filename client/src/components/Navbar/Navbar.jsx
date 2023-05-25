@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Navbar.css';
-import cinebuds from './entbuds.png';
+import cinebuds from './newLogo.png';
 import { Link } from 'react-router-dom';
 import { Button } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
