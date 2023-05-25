@@ -3,7 +3,7 @@ import axios from "../../../api/Axios";
 import wants from "../../../api/Wanted";
 import "./CatHome.css";
 import { Link } from "react-router-dom";
-import Cards from '../../Slide/Card';
+import TVCards from "../../Slide/TVCard";
 
 const ActionTVHome = () => {
     const [actiontvhome, setactiontvhome] = useState([]);
@@ -27,7 +27,7 @@ const ActionTVHome = () => {
           <div className="mainthing">
             {actiontvhome.map((actiontvshow, index) => {
               return (
-                <Cards key={index} movie={actiontvshow} />
+                <TVCards key={index} movie={actiontvshow} />
               );
             })}
           </div>

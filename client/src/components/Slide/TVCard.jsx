@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Cards = ({ movie, onRemove }) => {
+const TVCards = ({ movie, onRemove }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [liked , setLiked] = useState(false)
   const { user, isAuthenticated } = useAuth0();
@@ -102,7 +102,7 @@ const Cards = ({ movie, onRemove }) => {
         </div>
       ) : (
         <Link
-          to={`/movie/${movie.id}` || `/series/${movie.id}`}
+          to={`/series/${movie.id}`}
           style={{ textDecoration: "none", color: "white" }}
         >
           <div className="card">
@@ -146,4 +146,4 @@ const Cards = ({ movie, onRemove }) => {
   );
 };
 
-export default Cards;
+export default TVCards;

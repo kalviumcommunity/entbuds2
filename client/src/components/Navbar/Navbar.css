@@ -13,7 +13,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  gap: 35em;
+  gap: 30em;
   height: 84px;
 }
 
@@ -22,18 +22,19 @@
   display: flex;
   align-items: center;
   /* justify-content: space-evenly; */
-  gap: 1em;
+  gap: 2em;
 }
 
 .right{
   margin-top: 1em;
-  /* margin-right: -5em; */
+  margin-right: 1.4em;
 }
 
 .spans {
   width: 57em;
   padding: 0;
   margin-left: -14em;
+  margin-top: -0.7em;
 }
 
 span {
@@ -70,7 +71,9 @@ span {
 }
 
 .logo {
-  width: 7em;
+  height: 11em;
+  width: 14em;
+  margin-left: -1em;
   cursor: pointer;
 }
 
