@@ -10,7 +10,6 @@ Welcome to Cinebuds, a cutting-edge movie review website that brings you a seaml
 - [Usage](#usage)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -37,7 +36,7 @@ Cinebuds is a dynamic and user-friendly movie review website that allows users t
 To install and run Cinebuds locally, please follow these steps:
 
 1. Clone the repository:
-git clone https://github.com/your-username/cinebuds.git
+git clone https://github.com/kalviumcommunity/entbuds2.git
 
 
 2. Navigate to the project directory:
@@ -76,9 +75,6 @@ Include visually captivating screenshots of your website here to showcase its fe
 
 We welcome contributions from the open-source community to enhance Cinebuds. To contribute, please follow the guidelines outlined in the [CONTRIBUTING.md](https://github.com/your-username/cinebuds/blob/main/CONTRIBUTING.md) file.
 
-## License
-
-Cinebuds is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](https://github.com/your-username/cinebuds/blob/main/LICENSE) file for more details.
 
 ---
 
