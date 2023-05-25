@@ -30,7 +30,7 @@ const FilmPage = () => {
   const handleClick = async () => {
     if (review !== "") {
       await fetch(
-        `${process.env.REACT_APP_DATABASE}/api/review/${allabout.original_title}`
+        `${process.env.REACT_APP_BACKEND}/api/review/${allabout.original_title}`
       )
         .then((response) => {
           if (!response.ok) {
@@ -40,7 +40,7 @@ const FilmPage = () => {
         })
         .then((data) => {
           if (!data.exist) {
-            fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
+            fetch(`${process.env.REACT_APP_BACKEND}/api/review`, {
               method: "POST",
               headers: { "Content-type": "application/json" },
               body: JSON.stringify({
@@ -67,7 +67,7 @@ const FilmPage = () => {
                 console.log(e);
               });
           } else {
-            fetch(`${process.env.REACT_APP_DATABASE}/api/review`, {
+            fetch(`${process.env.REACT_APP_BACKEND}/api/review`, {
               method: "PUT",
               headers: { "Content-type": "application/json" },
               body: JSON.stringify({
