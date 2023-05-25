@@ -16,13 +16,21 @@
   width: 100%;
 }
 
-.thumbbox {
+/* .thumbbox {
   display: grid;
   grid-template-columns: 1fr 5fr;
+} */
+.thumbbox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+
+
 .thumbnail img {
-  height: 50vh;
+  max-height: 50vh;
+  max-width: 100%;
   z-index: 1;
   position: relative;
   bottom: 10vh;
@@ -129,8 +137,7 @@
 }
 
 .review{
-  width: 65vw;
-  height: 7vh;
+
   border-radius: 0.5em;
   font-size: 1rem;
   background-color: rgb(51, 49, 49);

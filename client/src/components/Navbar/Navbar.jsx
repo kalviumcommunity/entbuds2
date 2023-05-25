@@ -48,9 +48,9 @@ const Navbar = () => {
 
 
   return (
-    <div>
+    
         <nav className={`navbar ${nottransparent && "navbarblack"}`}>
-            <div className='container'>
+            
                 <div className='left'>
             <Link to="/"><img src={cinebuds} className='logo' alt='logo'></img></Link>
             <div className='spans'>
@@ -100,10 +100,10 @@ const Navbar = () => {
                 </Button>
              </div>   
             )}
-            </div>
+            
         </nav>
       
-    </div>
+    
   )
 }
 
