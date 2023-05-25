@@ -125,7 +125,7 @@ const Cards = ({ movie, onRemove }) => {
                 <span className="card-rating">{movie ? movie.vote_average : ""}</span>
               </div>
               <div className="card-desc">
-                {movie ? movie.overview.slice(0, 118) + "..." : ""}
+                {movie ? movie.overview && movie.overview.slice(0, 118) + "..." : ""}
               </div>
               {isAuthenticated && (
               <div>

@@ -11,24 +11,29 @@
 }
 
 .container {
-  padding: 0px 50px;
   display: flex;
+  justify-content: space-between;
+  gap: 35em;
   height: 84px;
 }
 
 .left {
+  margin-top: 1em;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-evenly; */
+  gap: 1em;
 }
 
 .right{
   margin-top: 1em;
-  margin-right: -5em;
+  /* margin-right: -5em; */
 }
 
 .spans {
-  margin-right: 50vw;
+  width: 57em;
+  padding: 0;
+  margin-left: -14em;
 }
 
 span {
@@ -38,8 +43,8 @@ span {
 
 .dropdown-content {
   position: absolute;
-  top: 52px;
-  right: 1070px;
+  top: 4em;
+  /* right: 1070px; */
   background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -65,12 +70,8 @@ span {
 }
 
 .logo {
-  height: 98px;
-  width: 147px;
-  position: fixed;
+  width: 7em;
   cursor: pointer;
-  left: 0;
-  top: 0;
 }
 
 .navbarblack {
@@ -112,12 +113,12 @@ span {
     background-color: rgba(0, 0, 0, 0.8);
   }
 
-  .logo {
+  /* .logo {
     position: relative;
     top: unset;
     left: unset;
     margin: -2em ;
-  }
+  } */
 
   .navbar > .container > div {
     width: 100%;

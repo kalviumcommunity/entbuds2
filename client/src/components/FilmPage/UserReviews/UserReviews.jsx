@@ -14,16 +14,17 @@ const UserReviews = (props) => {
   const { username } = props;
   const [CustReviews, setCustReviews] = useState([]);
   const [replyText, setReplyText] = useState("");
-  const [showreply, handleshowreply] = useState(true);
+  const [showreply, handleshowreply] = useState(false);
   const [editText, setEditText] = useState("");
   const [showEditForm, setShowEditForm] = useState(false);
+
 
   const styling = {
     color: "white",
   };
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_DATABASE}/api/review/${name}`)
+    fetch(`${process.env.REACT_APP_BACKEND}/api/review/${name}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.exist) {
@@ -46,7 +47,7 @@ const UserReviews = (props) => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DATABASE}/api/review/edit/${name}/${review._id}`,
+        `${process.env.REACT_APP_BACKEND}/api/review/edit/${name}/${review._id}`,
         {
           method: "PUT",
           headers: { "Content-type": "application/json" },
@@ -75,7 +76,7 @@ const UserReviews = (props) => {
   const handleDeleteReview = async (e, review) => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DATABASE}/api/review/${name}/${review._id}`,
+        `${process.env.REACT_APP_BACKEND}/api/review/${name}/${review._id}`,
         {
           method: "DELETE",
           headers: { "Content-type": "application/json" },
@@ -99,7 +100,7 @@ const UserReviews = (props) => {
   const handleLikeReview = async (e, review) => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DATABASE}/api/review/like/${name}/${review._id}/${user.email}`,
+        `${process.env.REACT_APP_BACKEND}/api/review/like/${name}/${review._id}/${user.email}`,
         {
           method: "PUT",
           headers: { "Content-type": "application/json" },
@@ -128,7 +129,7 @@ const UserReviews = (props) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DATABASE}/api/review/reply/${name}/${review._id}`,
+        `${process.env.REACT_APP_BACKEND}/api/review/reply/${name}/${review._id}`,
         {
           method: "POST",
           headers: { "Content-type": "application/json" },
@@ -160,23 +161,29 @@ const UserReviews = (props) => {
     }
   };
 
+
   return (
     <div style={styling}>
       {CustReviews.length > 0 &&
         CustReviews.map((review) => {
           return (
             <div className="letsrevw">
-              <img src={review.image} className="ppic" alt="prof_pic" />
+              
               <div className="textrev">
                 <div className="mainrev">
+                  <div className="review">
+                <img src={review.image} className="ppic" alt="prof_pic" />
+                <div>
                   <h3>{review.name}</h3>
                   <p key={review._id}>
                     <p style={{ marginRight: "5.6em" }}>{review.review}</p>
                   </p>
+                  </div>
+                  </div>
 
 
-                  {showEditForm && (
-                    <form onSubmit={(e) => handleEditReview(e, review)}>
+                  {user && review.name === user.name && showEditForm && (
+                    <form className="edit" onSubmit={(e) => handleEditReview(e, review)}>
                       <input
                         type="text"
                         placeholder="Edit Review"
@@ -238,6 +245,7 @@ const UserReviews = (props) => {
                             <div className="userrepl">
                               <h3>{reply.user}</h3>
                               <p> {reply.text}</p>
+                              
 
                             </div>
                           </div>
@@ -254,7 +262,7 @@ const UserReviews = (props) => {
                           onChange={(e) => setReplyText(e.target.value)}
                           style={{
                             height: "4vmax",
-                            width: "30vmin",
+                            width: "14em",
                             marginRight: "63em"
                           }}
                         />
