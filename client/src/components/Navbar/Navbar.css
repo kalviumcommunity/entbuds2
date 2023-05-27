@@ -1,7 +1,8 @@
 .navbar {
   position: fixed;
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  
   margin: 0;
   width: 100%;
   z-index: 2;
@@ -29,6 +30,7 @@
 .right{
   margin-top: 1em;
   margin-right: 1.4em;
+  align-items: center;
   width: 15%;
 }
 
@@ -55,6 +57,7 @@ span {
   background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  left: 32% ;
   overflow: hidden;
   padding: 10px;
   animation: fade-in 0.3s ease;

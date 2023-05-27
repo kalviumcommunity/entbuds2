@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Button, TextField } from "@mui/material";
+import React, { useState } from 'react';
+import { Button } from "@mui/material";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import './Book.css';
+import imagenot from './nopost.png'
 
 const Book = () => {
-  const [movieLinks, setMovieLinks] = useState([]);
+  const [moviebooks, setMoviebooks] = useState([]);
+  
   const [city, setCity] = useState("")
 
   // useEffect(() => {
@@ -10,7 +14,7 @@ const Book = () => {
   //     .then(response => response.json())
   //     .then(data => {
   //       const links = data.movies.map(movie => movie.bookingUrl);
-  //       setMovieLinks(links);
+  //       setMoviebooks(links);
   //     })
   //     .catch(error => {
   //       console.log('Error fetching movie data:', error);
@@ -22,32 +26,60 @@ const Book = () => {
       const response = await fetch(`${process.env.REACT_APP_DATABASE}/api/movies/${city}`);
       const data = await response.json();
       const { movies } = data;
-      setMovieLinks(movies);
+      setMoviebooks(movies);
     } catch (error) {
       console.error('Error fetching movie data:', error);
     }
   };
 
   return (
-    <div>
+    <div style={{minHeight: "90vh"}}>
       <br />
       <br />
       <br />
       <br />
+      <br />
+      <br /><br />
 
-      <div>
-      <TextField value={city} onChange={(e)=> setCity(e.target.value)} placeholder="Enter city" />
-      <Button onClick={fetchMovies}>Fetch Movies</Button>
+
+      <div className='ticketsearcher'>
+      <input type='text' className='ticketsearch' value={city} onChange={(e)=> setCity(e.target.value)} placeholder="  Enter city"  style={{ color: 'white', fontSize: '12px', paddingLeft: "1em" }} />
+      <Button style={{
+                fontSize: "1rem",
+                width: "9vw",
+                background: "red",         
+                color: "white",                
+                textDecoration: "none"
+              }} onClick={fetchMovies}>Let's Go</Button>
       </div>
       <br />
       <br />
       <br />
 
-      {movieLinks.map((link, index) => (
-        <div style={{display: "flexbox"}}>
-        <a key={index} href={link.bookingUrl} target="_blank" rel="noopener noreferrer">
-          <Button>Book Ticket</Button>
+      {moviebooks.map((link, index) => (
+        <div className='bookcard'>
+          
+          <img className='book-img' src={link.posterUrl || imagenot} alt='poster'></img>
+          <div className='bookbtn'>
+          <a key={index} href={link.bookingUrl} target="_blank" rel="noopener noreferrer">
+          <Button style={{
+                fontSize: "1.2rem",
+                background: " rgba(0, 0, 0, 0.7)",
+                width: "14vw",           
+                color: "red",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}><ArrowRightAltIcon fontSize='large'  /></Button>
         </a>
+          </div>
+          <div className='book-overlay'>
+          <div className="book-title">
+            <h2>{link.title}</h2>
+            </div>
+           
+          </div>
+        
         </div>
       ))}
       

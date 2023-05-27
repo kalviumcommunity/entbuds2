@@ -214,7 +214,9 @@ const FilmPage = () => {
         <div className="review-section">
           <h2 color="red">Reviews</h2>
           <div className="review-container">
-            <TextField
+
+
+            <input
               value={review}
               className="review"
               label="Type your review here"
@@ -231,7 +233,8 @@ const FilmPage = () => {
                 color: "black",
                 display: "flex",
                 alignItems: "center",
-                height: "2.8em"
+                height: "2.8em",
+                margin: "auto"
               }}
             >
               Post
