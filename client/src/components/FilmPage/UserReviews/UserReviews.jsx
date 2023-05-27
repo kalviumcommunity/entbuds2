@@ -179,7 +179,7 @@ const UserReviews = (props) => {
               
               <div className="textrev">
                 <div className="mainrev">
-                  <div className="review">
+                  <div className="reviewtext">
                 <img src={review.image} className="ppic" alt="prof_pic" />
                 <div>
                   <h3>{review.name}</h3>

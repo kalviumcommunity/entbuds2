@@ -58,7 +58,7 @@ const Navbar = () => {
             <Link to="movies/toprated" style={{textDecoration: "none"}}><span id='top'>Top Rated</span></Link>
             <span onClick={handleDropdown}>Categories</span>
             {showDropdown && (
-                                <div className="dropdown-content" ref={dropdownRef}>
+                                <div className="dropdown-content" ref={dropdownRef} >
                                     <Link to="movies/horror" style={{textDecoration: "none"}}><span>Horror</span></Link>
                                     <Link to="movies/action" style={{textDecoration: "none"}}><span>Action</span></Link>
                                     <Link to="movies/comedy" style={{textDecoration: "none"}}><span>Comedy</span></Link>

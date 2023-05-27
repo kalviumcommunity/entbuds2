@@ -109,9 +109,9 @@
     width: 70%;
   }
 
-  .review{
+  .reviewtext{
     display: flex;
-   background-color: rgb(78, 74, 74);
+   /* background-color: rgb(78, 74, 74); */
    text-align: start;
   }
 
