@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const TVCards = ({ movie, onRemove }) => {
@@ -114,6 +116,33 @@ const TVCards = ({ movie, onRemove }) => {
                 movie ? movie.poster_path : ""
               }`}
             />
+            {isAuthenticated && (
+            <div className='btnlike'>
+          {!liked ? (
+          <Button style={{
+                fontSize: "1.2rem",
+                background: " rgba(0, 0, 0, 0.7)",
+                width: "14vw",   
+                bottom: "1",        
+                color: "red",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }} onClick={addToLiked}><FavoriteBorderIcon fontSize="medium"  /></Button>
+              ) : (
+                <Button style={{
+                  fontSize: "1.2rem",
+                  background: " rgba(0, 0, 0, 0.7)",
+                  width: "14vw",           
+                  color: "red",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }} onClick={deleteFromLiked}><DeleteOutlineOutlinedIcon fontSize="medium" /></Button>
+              )}
+        
+          </div>
+              )}
             
             <div className="card-overlay">
               
@@ -127,16 +156,6 @@ const TVCards = ({ movie, onRemove }) => {
               <div className="card-desc">
                 {movie ? movie.overview && movie.overview.slice(0, 118) + "..." : ""}
               </div>
-              {isAuthenticated && (
-              <div>
-                {!liked ? (
-                  <Button onClick={addToLiked}>Like</Button>
-                ) : (
-                  <Button onClick={deleteFromLiked}>Remove</Button>
-                )}
-            
-            </div>
-              )}
             </div>
             
           </div>
