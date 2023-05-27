@@ -140,7 +140,8 @@
   display: flex;
   justify-content: space-between;
   gap: 6.3em;
-  padding: 2em;
+  padding: 2vh 0vh;
+  padding-bottom: 2vh;
 }
 
 .userrevs{
