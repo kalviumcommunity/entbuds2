@@ -221,6 +221,7 @@ const FilmPage = () => {
               className="review"
               label="Type your review here"
               onChange={(e) => setReview(e.target.value)}
+              style={{ color: 'white', fontSize: '12px', paddingLeft: "1em" }}
             />
 
             <Button

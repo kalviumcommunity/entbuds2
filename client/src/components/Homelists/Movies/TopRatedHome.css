@@ -29,6 +29,7 @@
   .Containerbottom{
     width: 100%;
     overflow-y: hidden;
+    padding: 1%;
   }
   
   .Containerbottom::-webkit-scrollbar{
