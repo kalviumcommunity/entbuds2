@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Button } from "@mui/material";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import './Book.css';
-import imagenot from './nopost.png'
+import imagenot from './nopost.png';
+import Autosuggest from 'react-autosuggest';
+import cityList from './Cities';
 
 const Book = () => {
   const [moviebooks, setMoviebooks] = useState([]);
-  
-  const [city, setCity] = useState("")
+  const [city, setCity] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   // useEffect(() => {
   //   fetch(`${process.env.REACT_APP_DATABASE}/api/movies/jalandhar`)
@@ -32,6 +34,45 @@ const Book = () => {
     }
   };
 
+  const getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+    return inputLength === 0 ? [] : cityList.filter(city =>
+      city.toLowerCase().slice(0, inputLength) === inputValue
+    );
+  };
+
+  const renderSuggestion = suggestion => (
+    <span className="suggestion-item">{suggestion}</span>
+  );
+
+  const renderSuggestionsContainer = ({ containerProps, children }) => (
+    <div {...containerProps} className="suggestions-container">
+      {children}
+    </div>
+  );
+  
+
+  const onSuggestionsFetchRequested = ({ value }) => {
+    setSuggestions(getSuggestions(value));
+  };
+
+  const onSuggestionsClearRequested = () => {
+    setSuggestions([]);
+  };
+
+  const onSuggestionSelected = (_, { suggestion }) => {
+    setCity(suggestion.toLowerCase());
+  };
+
+  const inputProps = {
+    placeholder: 'Enter city',
+    value: city,
+    onChange: (_, { newValue }) => setCity(newValue),
+    className: 'ticketsearch',
+    style: { color: 'white', fontSize: '12px', paddingLeft: "1em" },
+  };
+
   return (
     <div style={{minHeight: "90vh"}}>
       <br />
@@ -43,7 +84,17 @@ const Book = () => {
 
 
       <div className='ticketsearcher'>
-      <input type='text' className='ticketsearch' value={city} onChange={(e)=> setCity(e.target.value)} placeholder="  Enter city"  style={{ color: 'white', fontSize: '12px', paddingLeft: "1em" }} />
+      
+      <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={onSuggestionsClearRequested}
+          onSuggestionSelected={onSuggestionSelected}
+          getSuggestionValue={value => value}
+          renderSuggestion={renderSuggestion}
+          renderSuggestionsContainer={renderSuggestionsContainer}
+          inputProps={inputProps}
+        />
       <Button style={{
                 fontSize: "1rem",
                 width: "9vw",

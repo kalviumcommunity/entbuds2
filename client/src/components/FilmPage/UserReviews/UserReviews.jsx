@@ -6,6 +6,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ReplyIcon from '@mui/icons-material/Reply';
 import EditIcon from '@mui/icons-material/Edit';
+import DoneIcon from '@mui/icons-material/Done';
 
 
 const UserReviews = (props) => {
@@ -15,7 +16,7 @@ const UserReviews = (props) => {
   const [CustReviews, setCustReviews] = useState([]);
   const [replyText, setReplyText] = useState("");
   const [editText, setEditText] = useState("");
-  const [showEditForm, setShowEditForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState({});
   const [showReplySection, setShowReplySection] = useState({});
 
 
@@ -37,9 +38,12 @@ const UserReviews = (props) => {
       });
   }, [name]);
 
-  const handleShowEditForm = (text) => {
+  const handleShowEditForm = (text, reviewId) => {
     setEditText(text);
-    setShowEditForm(true);
+    setShowEditForm((prevState) => ({
+      ...prevState,
+      [reviewId]: !prevState[reviewId],
+    }));
   };
 
   const handleEditReview = async (e, review) => {
@@ -174,6 +178,7 @@ const UserReviews = (props) => {
       {CustReviews.length > 0 &&
         CustReviews.map((review) => {
           const isReplySectionVisible = showReplySection[review._id];
+          
           return (
             <div className="letsrevw"  key={review._id}>
               
@@ -190,15 +195,17 @@ const UserReviews = (props) => {
                   </div>
 
 
-                  {user && review.name === user.name && showEditForm && (
+                  {user && review.name === user.name && showEditForm[review._id] && (
                     <form className="edit" onSubmit={(e) => handleEditReview(e, review)}>
                       <input
                         type="text"
                         placeholder="Edit Review"
+                        className="changer"
+                        style={{ color: 'white', fontSize: '12px', paddingLeft: "1em" }}
                         value={editText}
                         onChange={(e) => setEditText(e.target.value)}
                       />
-                      <button type="submit">Save</button>
+                      <Button type="submit" style={{background: 'red', height: '3.6vh', marginLeft: '1vw', color: 'white'}}><DoneIcon /></Button>
                     </form>
                   )}
 
@@ -220,7 +227,7 @@ const UserReviews = (props) => {
 
                   {user && review.name === user.name &&
 
-                    <EditIcon onClick={() => handleShowEditForm(review.review)}
+                    <EditIcon onClick={() => handleShowEditForm(review.review, review._id)}
                       sx={{ fontSize: 16 }}
                     />}
 

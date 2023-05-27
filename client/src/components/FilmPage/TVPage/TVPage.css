@@ -63,7 +63,7 @@
 }
 
 .review {
-  width: 65em;
+  width: 80vw;
   height: 7vh;
   border-radius: 0.5em;
   font-size: 1rem;
@@ -72,8 +72,9 @@
 
 .review-container {
   display: flex;
-  gap: 1em;
-  padding: 2em;
+  gap: 2vw;
+  padding: 2vh 0vh;
+  padding-bottom: 2vh;
 }
 
 .userrevs {
@@ -81,7 +82,7 @@
   padding: 1em;
   border-radius: 2em;
   width: 90vw;
-  margin-left: 4em;
+  margin-left:0vw;
 }
 
 .review::placeholder {
