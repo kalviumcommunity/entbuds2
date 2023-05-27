@@ -67,7 +67,7 @@ const SearchPage = () => {
          <br />
          <br />
          <br />
-      <input type="text"  className="searchbar" placeholder="  Search for a movie" value={query} onChange={InputChange} />
+      <input type="text"  className="searchbar" placeholder="  Search for a movie" value={query} onChange={InputChange}  style={{ color: 'white', fontSize: '12px', paddingLeft: "1em" }} />
       {notblank && (
         <ActionList />
       )}

@@ -51,13 +51,13 @@ span {
 }
 
 .dropdown-content {
-  position: absolute;
-  top: 4em;
+  position: fixed;
+  top: 10%;
   /* right: 1070px; */
-  background-color: white;
+  background-color: rgb(78, 76, 76);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  left: 32% ;
+  left: 31% ;
   overflow: hidden;
   padding: 10px;
   animation: fade-in 0.3s ease;
@@ -66,13 +66,14 @@ span {
 .dropdown-content span {
   display: block;
   padding: 10px;
-  color: black;
+  color: rgb(239, 236, 236);
   text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .dropdown-content span:hover {
   background-color: #f9f9f9;
+  color: red;
 }
 
 .category-span {

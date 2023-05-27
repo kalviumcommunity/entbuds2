@@ -27,6 +27,7 @@
 
 .btnlike{
   position: absolute;
+  width: 100%;
   bottom: 0;
   align-items: center;
   z-index: 1;

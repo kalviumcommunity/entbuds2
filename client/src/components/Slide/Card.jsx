@@ -122,23 +122,23 @@ const Cards = ({ movie, onRemove }) => {
           <Button style={{
                 fontSize: "1.2rem",
                 background: " rgba(0, 0, 0, 0.7)",
-                width: "14vw",   
+                width: "100%",   
                 bottom: "1",        
                 color: "red",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center"
-              }} onClick={addToLiked}><FavoriteBorderIcon fontSize="medium"  /></Button>
+              }} onClick={addToLiked}><FavoriteBorderIcon width='100%' fontSize="medium"  /></Button>
               ) : (
                 <Button style={{
                   fontSize: "1.2rem",
                   background: " rgba(0, 0, 0, 0.7)",
-                  width: "14vw",           
+                  width: "100%",           
                   color: "red",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center"
-                }} onClick={deleteFromLiked}><DeleteOutlineOutlinedIcon fontSize="medium" /></Button>
+                }} onClick={deleteFromLiked}><DeleteOutlineOutlinedIcon width='100%' fontSize="medium" /></Button>
               )}
         
           </div>
