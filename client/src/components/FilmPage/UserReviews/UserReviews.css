@@ -137,6 +137,13 @@
     margin-right: 10px;
   }
   
+.changer{
+  height: 4vh;
+  border-radius: 0.5em;
+  font-size: 1rem;
+  background-color: rgb(51, 49, 49);
+}
+
   .like-btn {
     border: none;
     background-color: transparent;
@@ -155,10 +162,10 @@
   
   .btns {
     display: flex;
-    gap: 1em;
+    gap: 1vw;
     align-items: flex-start;
-    margin-left: 7em;
-    margin-top: 0.1em;
+    margin-left: 5vw;
+    margin-top: 0vw;
   }
   
   button {

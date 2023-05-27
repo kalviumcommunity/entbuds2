@@ -19,7 +19,7 @@ import ListPage from './components/FilmPage/UserPage/ListPage';
 import TVHome from './components/TVHome/TVHome';
 import TVpage from './components/FilmPage/TVPage/TVpage';
 import ScifiList from './components/Lists/ScifiList';
-import Book from './components/Book';
+import Book from './components/Booking/Book';
 
 
 function App() {
