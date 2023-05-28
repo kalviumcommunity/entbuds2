@@ -12,7 +12,7 @@ import SearchPage from './components/Navbar/SearchPage';
 import FilmPage from './components/FilmPage/Main/FilmPage'
 import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
-import ScaleLoader from "react-spinners/ScaleLoader";
+import BounceLoader from "react-spinners/BounceLoader";
 import PrivacyPolicy from './components/Footer/Privacy Policy/PrivacyPolicy';
 import Terms from './components/Footer/T&C/T&C';
 import ListPage from './components/FilmPage/UserPage/ListPage';
@@ -36,13 +36,12 @@ function App() {
     <div className="App">
       {
         loader ?
-        <ScaleLoader 
-        size={30}
+        <div className='loadingapp' >
+        <BounceLoader 
+        size={200}
         color='red'
-        style={{
-          marginTop: '7em'
-        }}
         />
+        </div>
         :
       
       <Router>

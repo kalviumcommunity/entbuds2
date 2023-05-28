@@ -13,3 +13,9 @@ margin:  2.5rem;
     justify-content: center;
 }
 
+.loadingpage{
+    margin-top: 18%;
+    margin-left: -1%;
+    min-height: 80vh;
+}
+
