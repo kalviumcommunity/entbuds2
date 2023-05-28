@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "@mui/material";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import './Book.css';
@@ -25,7 +25,8 @@ const Book = () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_DATABASE}/api/movies/${city}`);
+      const cityToshow = city || 'mumbai';
+      const response = await fetch(`${process.env.REACT_APP_DATABASE}/api/movies/${cityToshow}`);
       const data = await response.json();
       const { movies } = data;
       setMoviebooks(movies);
@@ -33,6 +34,11 @@ const Book = () => {
       console.error('Error fetching movie data:', error);
     }
   };
+
+  useEffect(() => {
+    fetchMovies();
+  }, [])
+  
 
   const getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();

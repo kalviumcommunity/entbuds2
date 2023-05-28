@@ -9,9 +9,11 @@ const ActionHomeList = () => {
   const [actionhomemovie, setActionHomeMovie] = useState([]);
 
   useEffect(() => {
+
     axios.get(wants.getaction).then((response) => {
       setActionHomeMovie(response.data.results);
     });
+    
   }, []);
 
   return (

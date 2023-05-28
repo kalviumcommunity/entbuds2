@@ -7,6 +7,7 @@ const ActionList = () => {
 
   const [actionmovie, setActionMovie] = useState([]);
   const [page, setPage] = useState(1);
+  const [loader, setLoader] = useState();
 
 
   useEffect(() => {

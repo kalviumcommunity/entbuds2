@@ -5,6 +5,11 @@
   font-family: 'Wix Madefor Display', sans-serif;
 }
 
+.loadingapp{
+  margin-top: 18%;
+  margin-left: 40%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

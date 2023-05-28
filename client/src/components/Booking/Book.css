@@ -9,12 +9,13 @@
 
 .suggestion-item{
   padding: 1vh;
+  width: 100vw;
 }
 
 .suggestion-item:hover{
-  background-color: white;
+  background-color: #6d6969;
   color: red;
-  
+  width: fit-content;
 }
 .suggestions-container ul {
   list-style-type: none; 
